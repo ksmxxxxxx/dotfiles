@@ -1,0 +1,124 @@
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+[[plugins]]
+repo = 'Shougo/vimproc.vim'
+build = 'make'
+
+[[plugins]]
+repo = 'Shougo/neomru.vim'
+on_path = '.*'
+
+[[plugins]]
+repo = 'Shougo/vimfiler'
+
+[[plugins]]
+repo = 'Shougo/denite.nvim'
+depends = 'Shougo/neomru'
+hook_add = '''
+  nnoremap ,df :<C-u>DeniteBufferDir -buffer-name=files file<CR>
+  nnoremap ,db :<C-u>Denite buffer -buffer-name=files file<CR>
+  nnoremap ,dr :<C-u>Denite -buffer-name=register register<CR>
+  nnoremap ,dm :<C-u>Denite file_mru<CR>
+  nnoremap ,g  :<C-u>Denite grep<CR>
+autocmd FileType denite call s:denite_my_settings()
+function! s:denite_my_settings() abort
+  nnoremap <silent><buffer><expr> <CR>
+  \ denite#do_map('do_action')
+  nnoremap <silent><buffer><expr> d
+  \ denite#do_map('do_action', 'delete')
+  nnoremap <silent><buffer><expr> p
+  \ denite#do_map('do_action', 'preview')
+  nnoremap <silent><buffer><expr> q
+  \ denite#do_map('quit')
+  nnoremap <silent><buffer><expr> i
+  \ denite#do_map('open_filter_buffer')
+  nnoremap <silent><buffer><expr> <Space>
+  \ denite#do_map('toggle_select').'j'
+endfunction  
+'''
+hook_post_source = '''
+call denite#custom#option('default', 'prompt', '>')
+'''
+
+[[plugins]]
+repo = 'cocopon/iceberg.vim'
+hook_add = '''
+  set termguicolors
+  color iceberg
+  syntax on
+  highlight Normal ctermbg=NONE guibg=NONE
+  highlight NonText ctermbg=NONE guibg=NONE
+  highlight Folded ctermbg=NONE guibg=NONE
+  highlight EndOfBuffer ctermbg=NONE guibg=NONE
+'''
+
+[[plugins]]
+repo = 'nathanaelkane/vim-indent-guides'
+hook_add = '''
+let g:indent_guides_enable_on_vim_startup = 1
+'''
+[[plugins]]
+repo ='dense-analysis/ale'
+on_i = 1
+hook_add = '''
+let g:ale_linters = {
+\   'ruby': ['rubocop'],
+\   'javascript': ['eslint'],
+\   'css': ['stylelint']
+\}
+let g:ale_fixers = {
+\   'ruby': ['rubocop'],
+\   'javascript': ['standard'],
+\   'css': ['stylelint'],
+\}
+let g:ale_javascript_prettier_use_local_config = 1
+'''
+
+[[plugins]]
+repo = 'vim-airline/vim-airline'
+depends = ['vim-airline/vim-airline-themes']
+hook_add = '''
+  source ~/.config/nvim/rc/vim-airline.rc.vim
+'''
+
+[[plugins]]
+repo = 'vim-airline/vim-airline-themes'
+
+[[plugins]]
+repo = 'vim-scripts/vim-auto-save'
+hook_add = '''
+  let g:auto_save = 1
+  let g:auto_save_in_insert_mode = 0
+  let g:auto_save_insert_mode = 0
+  let g:auto_save_silent = 1
+'''
+
+# ============================================================================
+# grep && replace
+# ============================================================================
+[[plugins]]
+repo = 'thinca/vim-qfreplace'
+
+# ============================================================================
+# Enhancement
+# ============================================================================
+[[plugins]]
+repo = 'tpope/vim-surround'
+
+[[plugins]]
+repo = 'vim-scripts/loremipsum'
+# :Loremipsum[!] [WORDCOUNT] [PARAGRAPH_TEMPLATE] [PREFIX POSTFIX]
+#     Insert some random text.
+#
+# :Loreplace [REPLACEMENT] [PREFIX] [POSTFIX]
+#     Replace the random text with something else or simply remove it.
+
+[[plugins]]
+repo = 'metakirby5/codi.vim'
+
+[[plugins]]
+repo = 'cohama/lexima.vim'
+
+[[plugins]]
+repo = 'vim-jp/vital.vim'

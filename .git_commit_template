@@ -1,0 +1,42 @@
+
+# ==== Emojis ====
+# 🌱 :seedling: +++++++++++++++++ Initial commit, First commit
+# 🎨 :art:+++++++++++++++++++++++ Attachment to design, Improve design, Adjust design, Tweak layout etc
+# 💎 :gem: ++++++++++++++++++++++ Add Ruby gems
+# 📦 :package: ++++++++++++++++++ Add node-packages
+# 🐳 :whale: ++++++++++++++++++++ Docker
+# 🍄 :mushroom: +++++++++++++++++ Update using package, using module, tools etc
+# 💾 :floppy_disk: ++++++++++++++ WIP
+# 🚧 :construction: +++++++++++++ Add new code
+# 🤖 :robot_face: +++++++++++++++ Write Test
+# 🔧 :wrench: +++++++++++++++++++ Refactoring code
+# 🏇 :horse_racing: +++++++++++++ Refactoring performance
+# 👾 :space_invader: ++++++++++++ Fix bug
+# 🚮 :put_litter_in_its_place: ++ Remove no need file, needless code, useless package etc
+# 🔪 :hocho: ++++++++++++++++++++ Remove useless code
+# 👋 :wave: +++++++++++++++++++++ Bye
+# 📝 :memo: +++++++++++++++++++++ Writing docs
+ 
+# ===
+ 
+# For Dotfiles
+# 🚿 :shower: +++++++++++++++++++ Clear up
+# 🐧 :penguin: ++++++++++++++++++ Shell configration
+# 🍻 :beers: ++++++++++++++++++++ Homebrew configration
+#    :octcat: +++++++++++++++++++ Git configration
+
+# ==== Format ====
+# :emoji: Commit Message.
+#
+# Commit body...
+
+# ==== The Seven Rules ====
+# 1. Separate subject from body with a blank line
+# 2. Limit the subject line to 50 characters
+# 3. Capitalize the subject line
+# 4. Do not end the subject line with a period
+# 5. Use the imperative mood in the subject line
+# 6. Wrap the body at 72 characters
+# 7. Use the body to explain what and why vs. how
+
+# How to Write a Git Commit Message http://chris.beams.io/posts/git-commit/

@@ -1,0 +1,5 @@
+# show commit ID
+set main-view = id date author commit-title:graph=yes,refs=yes
+
+# split view set
+set vertical-split = no

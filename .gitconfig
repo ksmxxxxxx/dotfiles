@@ -1,0 +1,29 @@
+[user]
+  name = ksmxxxxxx
+  email = kankichi69@gmail.com
+[core]
+  editor = nvim
+  excludesfile = ~/.gitignore_global
+[color]
+  diff = auto
+  status = auto
+  branch = auto
+[alias]
+  st     = status
+  co     = checkout
+  cb     = checkout -b
+  br     = branch
+  brm    = branch -m
+  brd    = branch --delete
+  ci     = commit
+  cim    = commit -m
+  df     = diff
+  gr     = grep
+  log-o  = log --oneline
+  push-f = push --force-with-lease
+[commit]
+  template = ~/.git_commit_template
+[rebase]
+  autosquash = true
+[init]
+	defaultBranch = main
