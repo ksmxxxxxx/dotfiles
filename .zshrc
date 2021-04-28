@@ -40,7 +40,7 @@ eval "$(gh completion -s zsh)"
 # alias
 alias touchmd='touch $(date +%Y%m%d).md'
 
-# zsh-completions(補完機能)の設定
+# zsh-completions configration
 if [ -e /usr/local/share/zsh-completions ]; then
     fpath=(/usr/local/share/zsh-completions $fpath)
 fi
@@ -51,3 +51,27 @@ GIT_PS1_SHOWDIRTYSTATE=true
 GIT_PS1_SHOWUNTRACKEDFILES=true
 GIT_PS1_SHOWSTASHSTATE=true
 GIT_PS1_SHOWUPSTREAM=auto
+
+# Load zsh function file
+
+function loadlib() {
+        lib=${1:?"You have to specify a library file"}
+        if [ -f "$lib" ];then #ファイルの存在を確認
+                . "$lib"
+        fi
+}
+
+loadlib $ZDOTDIR/zshfiles
+
+# bindkey '^R' history-incremental-search-backward
+
+function peco-src () {
+  local selected_dir=$(ghq list -p | peco --query "$LBUFFER")
+  if [ -n "$selected_dir" ]; then
+    BUFFER="cd ${selected_dir}"
+    zle accept-line
+  fi
+  zle clear-screen
+}
+zle -N peco-src
+bindkey '^]' peco-src

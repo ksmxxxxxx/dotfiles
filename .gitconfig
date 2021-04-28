@@ -26,4 +26,8 @@
 [rebase]
   autosquash = true
 [init]
-	defaultBranch = main
+  defaultBranch = main
+[ghq]
+  root = ~/dev
+[ghq "https://github.com/ksmxxxxxx"]
+  root = ~/dev/ksmxxxxxx
