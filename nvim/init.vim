@@ -51,18 +51,23 @@ endif
 filetype on
 set nobackup
 set noswapfile
-set undofile
-"set noundofile
 set autoindent
 set clipboard+=unnamed
+
+if has ('presistent_undo')
+  set undodir=~/.cache/nvim/undo
+  set undofile
+endif
+
 " ChangeLog ++++++++++++++++++++++++++++++++++++++++++++++++++++++
-let g:changelog_timeformat = "%Y-%m-%d" 
+let g:changelog_timeformat = "%Y-%m-%d"
 let g:changelog_username = "ksm"
 
 " Visual setting =================================================
 set noshowmode
 set incsearch
 set showmatch
+set nowrap
 set number
 set list
 set hlsearch

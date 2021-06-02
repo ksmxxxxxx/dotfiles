@@ -69,8 +69,8 @@ let g:ale_linters = {
 \   'css': ['stylelint']
 \}
 let g:ale_fixers = {
+\   'javascript': ['eslint'],
 \   'ruby': ['rubocop'],
-\   'javascript': ['standard'],
 \   'css': ['stylelint']
 \}
 let g:ale_javascript_prettier_use_local_config = 1
@@ -98,27 +98,10 @@ hook_add = '''
 '''
 
 # ============================================================================
-# grep && replace
-# ============================================================================
-[[plugins]]
-repo = 'thinca/vim-qfreplace'
-
-# ============================================================================
 # Enhancement
 # ============================================================================
 [[plugins]]
 repo = 'tpope/vim-surround'
-
-[[plugins]]
-repo = 'vim-scripts/loremipsum'
-# :Loremipsum[!] [WORDCOUNT] [PARAGRAPH_TEMPLATE] [PREFIX POSTFIX]
-#     Insert some random text.
-#
-# :Loreplace [REPLACEMENT] [PREFIX] [POSTFIX]
-#     Replace the random text with something else or simply remove it.
-
-[[plugins]]
-repo = 'metakirby5/codi.vim'
 
 [[plugins]]
 repo = 'cohama/lexima.vim'
