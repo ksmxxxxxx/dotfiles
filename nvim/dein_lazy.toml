@@ -64,6 +64,11 @@ nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
 '''
 
 [[plugins]]
+repo = 'dNitro/vim-pug-complete'
+depends = 'deoplete.nvim'
+ft = ['pug']
+
+[[plugins]]
 repo = 'fszymanski/deoplete-emoji'
 depends = 'deoplete.nvim'
 on_ft = ['markdown', 'gitcommit']
