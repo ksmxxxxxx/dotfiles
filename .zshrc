@@ -39,6 +39,7 @@ eval "$(gh completion -s zsh)"
 
 # alias
 alias touchmd='touch $(date +%Y%m%d).md'
+alias repo='cd $(ghq list -p | peco --query "$LBUFFER")'
 
 # zsh-completions configration
 if [ -e /usr/local/share/zsh-completions ]; then
@@ -62,16 +63,3 @@ function loadlib() {
 }
 
 loadlib $ZDOTDIR/zshfiles
-
-# bindkey '^R' history-incremental-search-backward
-
-function peco-src () {
-  local selected_dir=$(ghq list -p | peco --query "$LBUFFER")
-  if [ -n "$selected_dir" ]; then
-    BUFFER="cd ${selected_dir}"
-    zle accept-line
-  fi
-  zle clear-screen
-}
-zle -N peco-src
-bindkey '^]' peco-src
