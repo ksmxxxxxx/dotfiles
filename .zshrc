@@ -53,14 +53,3 @@ GIT_PS1_SHOWDIRTYSTATE=true
 GIT_PS1_SHOWUNTRACKEDFILES=true
 GIT_PS1_SHOWSTASHSTATE=true
 GIT_PS1_SHOWUPSTREAM=auto
-
-# Load zsh function file
-
-function loadlib() {
-        lib=${1:?"You have to specify a library file"}
-        if [ -f "$lib" ];then #ファイルの存在を確認
-                . "$lib"
-        fi
-}
-
-loadlib $ZDOTDIR/zshfiles
