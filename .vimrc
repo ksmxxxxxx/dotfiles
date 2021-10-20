@@ -1,60 +1,34 @@
 let g:python3_host_prog = $PYENV_ROOT.'/versions/neovim3/bin/python'
 
-" dein Scripts ===================================================
-set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
+syntax enable
+filetype plugin indent on
 
-if &compatible
-  set nocompatible
-endif
-
-let s:dein_dir = expand('~/.cache/dein')
-let s:toml_dir = expand('~/.config/vim')
-
-if dein#load_state(s:dein_dir)
-  call dein#begin(s:dein_dir)
-
-  let s:toml = s:toml_dir . '/dein.toml'
-  let s:lazy_toml = s:toml_dir . '/dein_lazy.toml'
-  call dein#load_toml(s:toml, {'lazy': 0})
-  call dein#load_toml(s:lazy_toml, {'lazy': 1})
-  
-  call dein#end()
-  call dein#save_state()
-
-endif
-
-if dein#check_install()
-  call dein#install()
-endif
-call map(dein#check_clean(), "delete(v:val, 'rf')")
-" End dein Scripts ================================================
-
-
+set number
 
 " Default setting ================================================
-filetype on
-set nobackup
-set noswapfile
-set noundofile
-set autoindent
-set clipboard+=unnamed
+" filetype on
+" set nobackup
+" set noswapfile
+" set noundofile
+" set autoindent
+" set clipboard+=unnamed
 " ChangeLog ++++++++++++++++++++++++++++++++++++++++++++++++++++++
 let g:changelog_timeformat = "%Y-%m-%d" 
 let g:changelog_username = "ksm"
 
 " Visual setting =================================================
-set noshowmode
-set nowrap
-set incsearch
-set showmatch
-set number
-" set cursorline
-set list
-set hlsearch
-set ts=2 sw=2 expandtab
-set backspace=indent,eol,start
-set regexpengine=1
-set diffopt=vertical
+" set noshowmode
+" set nowrap
+" set incsearch
+" set showmatch
+" set number
+" " set cursorline
+" set list
+" set hlsearch
+" set ts=2 sw=2 expandtab
+" set backspace=indent,eol,start
+" set regexpengine=1
+" set diffopt=vertical
 
 " Filetype setting++++++++++++++++++++++++++++++++++++++++++++++++
 set fileformats=unix,dos,mac
