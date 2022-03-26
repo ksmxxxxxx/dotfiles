@@ -54,11 +54,12 @@ set noswapfile
 set autoindent
 set clipboard+=unnamed
 
-if has ('presistent_undo')
-  set undodir=~/.cache/nvim/undo
-  set undofile
-endif
+if has('persistent_undo')
+	let undo_path = expand('~/.cache/nvim/undo')
+	exe 'set undodir=' .. undo_path
+	set undofile
 
+endif
 " ChangeLog ++++++++++++++++++++++++++++++++++++++++++++++++++++++
 let g:changelog_timeformat = "%Y-%m-%d"
 let g:changelog_username = "ksm"
