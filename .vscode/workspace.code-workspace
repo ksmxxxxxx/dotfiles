@@ -1,0 +1,18 @@
+{
+	"folders": [
+		{
+			"name": "docs.ksmxxxxxx.page",
+			"path": "github.com/ksmxxxxxx/docs.ksmxxxxxx.page"
+		},
+		{
+			"name": "docs.ksmxxxxxx.page.article",
+			"path": "github.com/ksmxxxxxx/docs.ksmxxxxxx.page/_sources"
+		},
+		{
+			"name": "Kaigi on Rails",
+			"path": "github.com/kaigionrails/kaigi-on-rails-2022"
+		}
+		}
+	],
+	"settings": {}
+}
