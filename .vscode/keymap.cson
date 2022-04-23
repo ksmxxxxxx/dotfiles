@@ -1,0 +1,10 @@
+'body': {
+  'ctrl-1': 'inkdrop-note-templates:crowd-daily'
+  'ctrl-2': 'inkdrop-note-templates:fjord-daily'
+  'ctrl-[': 'core:toggle-heading-bigger'
+  'ctrl-]': 'core:toggle-heading-smaller'
+},
+'.CodeMirror.vim-mode.insert-mode textarea': {
+  'j j': 'vim:exit-insert-mode'
+  'k k': 'vim:exit-insert-mode'
+}
