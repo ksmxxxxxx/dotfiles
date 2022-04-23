@@ -7,6 +7,7 @@ tap "homebrew/services"
 tap "puma/puma"
 tap "rcmdnk/file"
 tap "sanemat/font"
+
 brew "asciinema"
 brew "autoconf"
 brew "autoconf@2.13"
@@ -20,10 +21,9 @@ brew "glib"
 brew "pkg-config"
 brew "cairo"
 brew "direnv"
-brew "docker"
+brew "docker", link: false
 brew "docker-compose", link: false
 brew "docker-machine"
-brew "deepl"
 brew "fd"
 brew "gobject-introspection"
 brew "harfbuzz"
@@ -69,18 +69,19 @@ brew "tig"
 brew "tree"
 brew "vim"
 brew "wget"
-brew "yarn", link: false
+brew "yarn"
 brew "zsh-completions"
 brew "argon/mas/mas"
 brew "puma/puma/puma-dev"
 brew "rcmdnk/file/brew-file"
 brew "sanemat/font/ricty"
-brew "appcleaner"
+
+cask "deepl"
+cask "appcleaner"
 cask "blackhole"
 cask "dropbox"
 cask "rightfont"
 cask "sequel-ace"
-cask "zettlr"
 cask "clipy"
 cask "clip-studio-paint"
 cask "zoom"
@@ -88,13 +89,22 @@ cask "visual-studio-code"
 cask "figma"
 cask "firefox"
 cask "discord"
-cask "slack"
 cask "iterm2"
 cask "obs"
-mas "Color Ninja", id: 1494948845
+
+mas "CleanMyMac-MAS", id: 1339170533
 mas "Contrast", id: 1254981365
-mas "GarageBand", id: 682658836
 mas "GIPHY CAPTURE", id: 668208984
+mas "Grammarly for Safari", id: 1462114288
+mas "LadioCast", id: 411213048
+mas "LastPass", id: 926036361
+mas "LINE", id: 539883307
+mas "Magnet", id: 441258766
+mas "Microsoft Excel", id: 462058435
+mas "Murasaki", id: 430300762
 mas "Skitch", id: 425955336
+mas "Slack", id: 803453959
+mas "Textwell", id: 905944937
+mas "Toggl Track", id: 957734279
 mas "Trello", id: 1278508951
 mas "Xcode", id: 497799835
