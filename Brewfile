@@ -91,6 +91,10 @@ cask "firefox"
 cask "discord"
 cask "iterm2"
 cask "obs"
+cask "pushplaylabs-sidekick"
+cask "cmd-eikana"
+cask "adobe-creative-cloud"
+cask "google-drive"
 
 mas "CleanMyMac-MAS", id: 1339170533
 mas "Contrast", id: 1254981365
