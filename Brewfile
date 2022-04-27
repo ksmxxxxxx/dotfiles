@@ -95,6 +95,7 @@ cask "pushplaylabs-sidekick"
 cask "cmd-eikana"
 cask "adobe-creative-cloud"
 cask "google-drive"
+cask "google-japanese-ime"
 cask "hyperswitch"
 
 mas "CleanMyMac-MAS", id: 1339170533
