@@ -1,0 +1,15 @@
+{    
+	"markdown": {
+        "prefix": "blog",
+        "body": [
+            "---",
+            "layout: layouts/blog",
+            "tags: ['$1']",
+            "title: $2",
+            "description: $3",
+            "date: $4",
+            "---",
+        ],
+        "description": "Use Eleventy.js article frontmater"
+    }
+}
