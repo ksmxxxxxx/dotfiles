@@ -81,6 +81,8 @@ if has('conceal')
   set conceallevel=0 concealcursor=
 endif
 set cursorline
+set encoding=utf-8
+set guifont=:h
 
 " Filetype setting++++++++++++++++++++++++++++++++++++++++++++++++
 set fileencoding=utf-8
