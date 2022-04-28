@@ -57,7 +57,6 @@ brew "peco"
 brew "perl"
 brew "postgresql", restart_service: true
 brew "postgresql@12"
-brew "python@2", link: false
 brew "ruby-build"
 brew "rbenv"
 brew "redis"
@@ -78,7 +77,8 @@ brew "sanemat/font/ricty"
 
 cask "deepl"
 cask "appcleaner"
-cask "blackhole"
+cask "blackhole-2ch"
+cask "blackhole-16ch"
 cask "dropbox"
 cask "rightfont"
 cask "sequel-ace"
