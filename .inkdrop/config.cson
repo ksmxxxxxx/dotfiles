@@ -4,9 +4,9 @@
       machineId: "3ROy79ZY_"
     devMode: true
     lastNavigationState:
-      editingNoteId: "note:h7bS8D4l_"
+      editingNoteId: "note:dXgH7T0bP"
       queryContext:
-        bookId: "book:AOAq9uZBO"
+        bookId: "book:OGI96QueP"
         filterKeyword: ""
         includeChildren: false
         mode: "book"
@@ -21,8 +21,9 @@
       noteListBar:
         w: 253
       position:
-        x: 1186
+        x: 1176
         y: 558
+      sideBar: {}
       size:
         h: 877
         w: 1324
