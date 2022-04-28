@@ -27,9 +27,9 @@
 [init]
   defaultBranch = main
 [ghq]
-  root = ~/dev
+  root = ~/Workspaces
 [ghq "https://github.com/ksmxxxxxx"]
-  root = ~/dev/ksmxxxxxx
+  root = ~/Workspaces/ksmxxxxxx
 [filter "lfs"]
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
