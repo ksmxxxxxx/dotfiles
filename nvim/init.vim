@@ -1,7 +1,8 @@
-" python provide setting =========================================
-let g:python_host_prog  = '/usr/local/bin/python2'
+" provider setting =========================================
 let g:python3_host_prog = '/usr/local/bin/python3'
-let g:ruby_host_prog = '/usr/local/bin/neovim-ruby-host'
+let g:ruby_host_prog = '$HOME/.rbenv/versions/3.1.2/bin/neovim-ruby-host'
+let g:loaded_node_provider = 0
+let g:loaded_perl_provider = 0
 
 " dein Scripts ===================================================
 let s:dein_dir = expand('~/.cache/nvim/dein')
