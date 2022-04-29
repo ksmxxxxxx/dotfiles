@@ -1,13 +1,30 @@
-source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+# source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 
-autoload -Uz promptinit
-promptinit
+# autoload -Uz promptinit
+# promptinit
 
-autoload -U compinit
-compinit -u
+# autoload -U compinit
+# compinit -u
 
-autoload -Uz colors
-colors
+# autoload -Uz colors
+# colors
+
+# Source Prezto.
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
+
+# zsh-completions configration
+if [ -e /usr/local/share/zsh-completions ]; then
+    fpath=(/usr/local/share/zsh-completions $fpath)
+fi
+
+# Git
+source ${HOME}/.zsh/git-prompt.sh
+GIT_PS1_SHOWDIRTYSTATE=true
+GIT_PS1_SHOWUNTRACKEDFILES=true
+GIT_PS1_SHOWSTASHSTATE=true
+GIT_PS1_SHOWUPSTREAM=auto
 
 # PATH config ========================================================
 export PATH=/usr/local/bin:$PATH
@@ -16,9 +33,13 @@ eval "$(rbenv init -)"
 
 export NVM_DIR="$HOME/.config/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "/usr/local/opt/nvm/nvm.sh" ] && \. "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+# [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
-export XDG_CONFIG_HOME="$HOME/.config"
+# export NVM_DIR="$HOME/.config/nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 export PATH="/usr/local/opt/mysql@5.6/bin:$PATH"
 
@@ -41,15 +62,3 @@ eval "$(gh completion -s zsh)"
 alias touchmd='touch $(date +%Y%m%d).md'
 alias repo='cd $(ghq list -p | peco --query "$LBUFFER")'
 alias merged-repo-delete='git branch --merged|egrep -v "\*|develop|main|master"|xargs git branch -d'
-
-# zsh-completions configration
-if [ -e /usr/local/share/zsh-completions ]; then
-    fpath=(/usr/local/share/zsh-completions $fpath)
-fi
-
-# Git
-source ${HOME}/.zsh/git-prompt.sh
-GIT_PS1_SHOWDIRTYSTATE=true
-GIT_PS1_SHOWUNTRACKEDFILES=true
-GIT_PS1_SHOWSTASHSTATE=true
-GIT_PS1_SHOWUPSTREAM=auto
