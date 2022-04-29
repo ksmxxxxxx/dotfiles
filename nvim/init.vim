@@ -5,48 +5,29 @@ let g:loaded_node_provider = 0
 let g:loaded_perl_provider = 0
 
 " dein Scripts ===================================================
-let s:dein_dir = expand('~/.cache/nvim/dein')
-let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
+let s:config_dir = expand('$XDG_CONFIG_HOME/nvim')
+set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
+if dein#load_state('~/.cache/dein')
+  call dein#begin('~/.cache/dein')
+  call dein#add('~/.cache/dein/repos/github.com/Shougo/dein.vim')
 
-" If not installed dein.vim, download from github
-if &runtimepath !~# '/dein.vim'
-  if !isdirectory(s:dein_repo_dir)
-    execute '!git clone https://github.com/Shougo/dein.vim' s:dein_repo_dir
-  endif
-  execute 'set runtimepath^=' . fnamemodify(s:dein_repo_dir, ':p')
-endif
+  call dein#load_toml(s:config_dir . '/dein.toml',      {'lazy': 0})
+  call dein#load_toml(s:config_dir . '/dein_lazy.toml', {'lazy': 1})
 
-" Start dein.vim settings
-if dein#load_state(s:dein_dir)
-  call dein#begin(s:dein_dir)
-
-  let g:rc_dir    = expand("~/.config/nvim")
-  let s:toml      = g:rc_dir . '/dein.toml'
-  let s:lazy_toml = g:rc_dir . '/dein_lazy.toml'
-
-  " toml cache
-  call dein#load_toml(s:toml,      {'lazy': 0})
-  call dein#load_toml(s:lazy_toml, {'lazy': 1})
-
-  " End dein.vim setting
   call dein#end()
   call dein#save_state()
 endif
-" If not installed plugins on startup.
+
 if dein#check_install()
   call dein#install()
 endif
 
-" End dein Scripts ================================================
-
 " Read rc file ===================================================
-
 " Scrapbox script
-if filereadable(expand('~/.config/nvim/rc/scrapbox.rc.vim'))
+let s:scrapbox_rc = expand(s:config_dir . '/rc/scrapbox.rc.vim')
+if filereadable('~/.config/nvim/rc/scrapbox.rc.vim')
   source ~/.config/nvim/rc/scrapbox.rc.vim
 endif
-
-" ================================================================
 
 " Default setting ================================================
 filetype on
@@ -56,12 +37,12 @@ set autoindent
 set clipboard+=unnamed
 
 if has('persistent_undo')
-	let undo_path = expand('~/.cache/nvim/undo')
-	exe 'set undodir=' .. undo_path
-	set undofile
-
+  let undo_path = expand('~/.cache/nvim/undo')
+  exe 'set undodir=' .. undo_path
+  set undofile
 endif
-" ChangeLog ++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+" ChangeLog ======================================================
 let g:changelog_timeformat = "%Y-%m-%d"
 let g:changelog_username = "ksm"
 
@@ -85,19 +66,11 @@ set cursorline
 set encoding=utf-8
 set guifont=:h
 
-" Filetype setting++++++++++++++++++++++++++++++++++++++++++++++++
+" Filetype setting ==============================================
 set fileencoding=utf-8
-" set fileencodings=iso-2022-jp,cp932,sjis,euc-jp,utf-8
 set fileformats=unix,dos,mac
 if has("autocmd")
-  " 改行時にコメントしない
-  " 改行時に勝手にインデントしない
-"  autocmd FileType * setlocal formatoptions-=ro noautoindent nosmartindent
-  " ファイル種別による個別設定(初期設定ではexpandtabなのでその設定はいれない)
-  " ts = tabstop, sts = softtabstop, sw = shiftwidth, tw = textwidth
-  " ft = filetype
   autocmd FileType html,xhtml,css,javascript,yaml,ruby,coffee,haml,slim,scss,pug setlocal ts=2 sts=2 sw=2
-  " autocmd FileType python     setlocal ts=4 sts=4 sw=4
 
   autocmd BufNewFile,BufRead *.js setlocal ft=javascript
   autocmd BufNewFile,BufRead *.ejs setlocal ft=html
