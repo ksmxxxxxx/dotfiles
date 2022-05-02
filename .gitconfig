@@ -28,8 +28,6 @@
   defaultBranch = main
 [ghq]
   root = ~/Workspaces
-[ghq "https://github.com/ksmxxxxxx"]
-  root = ~/Workspaces/ksmxxxxxx
 [filter "lfs"]
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
