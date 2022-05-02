@@ -4,9 +4,9 @@
       machineId: "3ROy79ZY_"
     devMode: true
     lastNavigationState:
-      editingNoteId: "note:dXgH7T0bP"
+      editingNoteId: "note:J81ObNTlz"
       queryContext:
-        bookId: "book:OGI96QueP"
+        bookId: "book:F4lu13uWe"
         filterKeyword: ""
         includeChildren: false
         mode: "book"
@@ -21,12 +21,13 @@
       noteListBar:
         w: 253
       position:
-        x: 1176
-        y: 558
-      sideBar: {}
+        x: 61
+        y: 540
+      sideBar:
+        visible: false
       size:
         h: 877
-        w: 1324
+        w: 1187
     themes: [
       "iceberg-syntax"
       "iceberg-preview"
