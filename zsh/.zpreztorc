@@ -121,7 +121,7 @@ zstyle ':prezto:module:editor' key-bindings 'vi'
 # Auto set to 'off' on dumb terminals.
 # zstyle ':prezto:module:prompt' theme 'sorin'
 zstyle ':prezto:module:prompt' theme 'pure'
-PURE_PROMPT_SYMBOL='%B%F{1}❯%F{3}❯%F{2}❯%f%b %%'
+# PURE_PROMPT_SYMBOL='%B%F{1}❯%F{3}❯%F{2}❯%f%b %%'
 
 # Set the working directory prompt display length.
 # By default, it is set to 'short'. Set it to 'long' (without '~' expansion)
