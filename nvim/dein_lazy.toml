@@ -2,6 +2,67 @@
 # Complement
 # ============================================================================
 [[plugins]]
+repo = 'Shougo/ddu-ui-ff'
+on_source = 'ddu.vim'
+
+[[plugins]]
+repo = 'Shougo/ddu-source-file'
+on_source = 'ddu.vim'
+
+[[plugins]]
+repo = 'Shougo/ddu-source-file_rec'
+on_source = 'ddu.vim'
+
+[[plugins]]
+repo = 'Shougo/ddu-source-register'
+on_source = 'ddu.vim'
+
+[[plugins]]
+repo = 'Shougo/ddu-kind-file'
+on_source = 'ddu.vim'
+
+
+[[plugins]]
+repo = 'Shougo/ddu-filter-matcher_substring'
+on_source = 'ddu.vim'
+
+[[plugins]]
+repo = 'Shougo/ddu-commands.vim'
+on_source ='ddu.vim'
+
+[[plugins]]
+repo = 'Shougo/ddu.vim'
+depends = ['denops.vim']
+hook_source = '''
+call ddu#custom#patch_global({
+  \  'ui': 'ff',
+  \  'sources': [
+  \    {'name': 'file', 'params': {}},
+  \    {'name': 'file_rec', 'params': {}},
+  \    {'name': 'register', 'params': {}},
+  \  ],
+  \  'sourceOptions': {
+  \    '_': {
+  \      'matchers': ['matcher_substring'],
+  \    },
+  \    'file_rec': {'path': expand("~")},
+  \  },
+  \  'kindOptions': {
+  \    'file': {
+  \      'defaultAction': 'open',
+  \    },
+  \  },
+  \})
+'''
+
+# ============================================================================
+# Complement
+# ============================================================================
+[[plugins]]
+repo = 'matsui54/ddc-buffer'
+on_source = 'ddc.vim'
+
+[[plugins]]
 repo = 'Shougo/ddc-converter_remove_overlap'
 on_source = 'ddc.vim'
 
@@ -22,7 +83,7 @@ repo = 'Shougo/ddc.vim'
 on_event = 'InsertEnter'
 depends = ['denops.vim']
 hook_source = '''
-call ddc#custom#patch_global('sources', ['around'])
+call ddc#custom#patch_global('sources', ['around', 'buffer'])
 call ddc#custom#patch_global('sourceOptions', {
     \ '_': {
     \ 'matchers': ['matcher_head'],
@@ -30,9 +91,16 @@ call ddc#custom#patch_global('sourceOptions', {
     \ 'converters': ['converter_remove_overlap'],
     \ },
     \ 'around': {'mark': 'A'},
+    \ 'buffer': {'mark': 'B'},
     \ })
 call ddc#custom#patch_global('sourceParams', {
     \ 'around': {'maxSize': 500},
+    \ 'buffer': {
+    \     'requireSameFiletype': v:false,
+    \     'limitBytes': 5000000,
+    \     'fromAltBuf': v:true,
+    \     'forceCollect': v:true,
+    \   }
     \ })
 
 " <TAB>: completion.
@@ -47,7 +115,6 @@ inoremap <expr><S-TAB>  ddc#map#pum_visible() ? '<C-p>' : '<C-h>'
 " Use ddc.
 call ddc#enable()
 '''
-
 
 # ============================================================================
 # Syntax
