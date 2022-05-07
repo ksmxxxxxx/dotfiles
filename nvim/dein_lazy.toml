@@ -1,9 +1,61 @@
 # ============================================================================
-# Complement
+# User Interface
 # ============================================================================
+[[plugins]]
+repo = 'Shougo/ddu.vim'
+depends = ['denops.vim']
+hook_add = '''
+nnoremap s<Space> <Cmd>Ddu file file_rec -ui-param-startFilter=v:true<CR>
+nnoremap b<Space> <Cmd>Ddu buffer -ui-param-startFilter=v:false<CR>
+'''
+hook_source = '''
+call ddu#custom#patch_global({
+    \  'ui': 'ff',
+    \  'sources': [
+    \    {'name': 'file'},
+    \    {'name': 'file_rec'},
+    \    {'name': 'buffer'},
+    \    {'name': 'register'},
+    \  ],
+    \  'sourceOptions': {
+    \    '_': {
+    \      'matchers': ['matcher_substring'],
+    \    },
+    \    'file_rec': { 'matchers': ['matcher_substring', 'matcher_hidden'] },
+    \  },
+    \  'kindOptions': {
+    \    'file': {
+    \      'defaultAction': 'open',
+    \    },
+    \  },
+    \})
+'''
+
+[[plugins]]
+repo = 'Shougo/ddu-commands.vim'
+on_source ='ddu.vim'
+on_cmd = 'Ddu'
+
 [[plugins]]
 repo = 'Shougo/ddu-ui-ff'
 on_source = 'ddu.vim'
+[plugins.ftplugin]
+ddu-ff = '''
+nnoremap <buffer> <CR>
+\ <Cmd>call ddu#ui#ff#do_action('itemAction')<CR>
+nnoremap <buffer> <Space>
+\ <Cmd>call ddu#ui#ff#do_action('toggleSelectItem')<CR>
+nnoremap <buffer> i
+\ <Cmd>call ddu#ui#ff#do_action('openFilterWindow')<CR>
+nnoremap <buffer><silent> q
+\ <Cmd>call ddu#ui#ff#do_action('quit')<CR>
+'''
+ddu-ff-filter = '''
+inoremap <buffer> <CR>
+\ <Esc><Cmd>close<CR>
+nnoremap <buffer> <CR>
+\ <Cmd>close<CR>
+'''
 
 [[plugins]]
 repo = 'Shougo/ddu-source-file'
@@ -18,42 +70,24 @@ repo = 'Shougo/ddu-source-register'
 on_source = 'ddu.vim'
 
 [[plugins]]
-repo = 'Shougo/ddu-kind-file'
+repo = 'shun/ddu-source-buffer'
 on_source = 'ddu.vim'
 
+[[plugins]]
+repo = 'shun/ddu-source-rg'
+on_source = 'ddu.vim'
+
+[[plugins]]
+repo = 'Shougo/ddu-kind-file'
+on_source = 'ddu.vim'
 
 [[plugins]]
 repo = 'Shougo/ddu-filter-matcher_substring'
 on_source = 'ddu.vim'
 
 [[plugins]]
-repo = 'Shougo/ddu-commands.vim'
-on_source ='ddu.vim'
-
-[[plugins]]
-repo = 'Shougo/ddu.vim'
-depends = ['denops.vim']
-hook_source = '''
-call ddu#custom#patch_global({
-  \  'ui': 'ff',
-  \  'sources': [
-  \    {'name': 'file', 'params': {}},
-  \    {'name': 'file_rec', 'params': {}},
-  \    {'name': 'register', 'params': {}},
-  \  ],
-  \  'sourceOptions': {
-  \    '_': {
-  \      'matchers': ['matcher_substring'],
-  \    },
-  \    'file_rec': {'path': expand("~")},
-  \  },
-  \  'kindOptions': {
-  \    'file': {
-  \      'defaultAction': 'open',
-  \    },
-  \  },
-  \})
-'''
+repo = 'Shougo/ddu-filter-matcher_hidden'
+on_source = 'ddu.vim'
 
 # ============================================================================
 # Complement
