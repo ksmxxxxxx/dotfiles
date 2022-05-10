@@ -1,0 +1,386 @@
+{
+  "title": "Razer Tartarus v2 keymap configrations for Clip studio pint",
+  "rules": [
+    {
+      "description": "Reset to display position（表示位置をリセット）",
+      "_comment": "The default is `ctrl(command) + @`, but does not work on macOS, so set it to F2",
+      "manipulators": [{
+        "conditions":[{
+          "type":"device_if",
+          "identifiers":[{
+            "product_id": 555,
+            "vendor_id":5426
+          }]
+        }],
+        "type": "basic",
+        "from": { "key_code": "c" },
+        "to": { "key_code": "f2", "modifiers": ["right_command"] }
+      }]
+    },
+    {
+      "description": "Flip vertical（左右反転）",
+      "_comment": "No shortcut assignment by default",
+      "manipulators": [{
+        "conditions":[{
+          "type":"device_if",
+          "identifiers":[{
+            "product_id": 555,
+            "vendor_id":5426
+          }]
+        }],
+        "type": "basic",
+        "from": { "key_code": "d" },
+        "to": { "key_code": "f4" }
+      }]
+    },
+    {
+      "description": "Rotate（回転)",
+      "manipulators": [{
+        "conditions":[{
+          "type":"device_if",
+          "identifiers":[{
+            "product_id": 555,
+            "vendor_id":5426
+          }]
+        }],
+        "type": "basic",
+        "from": { "key_code": "f" },
+        "to": { "key_code": "r" }
+      }]
+    },
+    {
+      "description": "Hand（手のひら）",
+      "manipulators": [{
+        "conditions":[{
+          "type":"device_if",
+          "identifiers":[{
+            "product_id": 555,
+            "vendor_id":5426
+          }]
+        }],
+        "type": "basic",
+        "from": { "key_code": "left_option" },
+        "to": { "key_code": "h" }
+      }]
+    },
+    {
+      "description": "Eraser（消しゴム）",
+      "manipulators": [{
+        "conditions":[{
+          "type":"device_if",
+          "identifiers":[{
+            "product_id": 555,
+            "vendor_id":5426
+          }]
+        }],
+        "type": "basic",
+        "from": { "key_code": "left_shift" },
+        "to": { "key_code": "e" }
+      }]
+    },
+    {
+      "description": "Scale / Rotate（拡大・縮小・回転）",
+      "manipulators": [{
+        "conditions":[{
+          "type":"device_if",
+          "identifiers":[{
+            "product_id": 555,
+            "vendor_id":5426
+          }]
+        }],
+        "type": "basic",
+        "from": { "key_code": "2" },
+        "to": { "key_code": "t", "modifiers": "left_command" }
+      }]
+    },
+    {
+      "description": "Delete（消去）",
+      "manipulators": [{
+        "conditions":[{
+          "type":"device_if",
+          "identifiers":[{
+            "product_id": 555,
+            "vendor_id":5426
+          }]
+        }],
+        "type": "basic",
+        "from": { "key_code": "1" },
+        "to": { "key_code": "delete_or_backspace" }
+      }]
+    },
+    {
+      "description": "Object（オブジェクト）",
+      "manipulators": [{
+        "conditions":[{
+          "type":"device_if",
+          "identifiers":[{
+            "product_id": 555,
+            "vendor_id":5426
+          }]
+        }],
+        "type": "basic",
+        "from": { "key_code": "q" },
+        "to": { "key_code": "o" }
+      }]
+    },
+    {
+      "description": "Move layer（レイヤー移動）",
+      "manipulators": [{
+        "conditions":[{
+          "type":"device_if",
+          "identifiers":[{
+            "product_id": 555,
+            "vendor_id":5426
+          }]
+        }],
+        "type": "basic",
+        "from": { "key_code": "w" },
+        "to": { "key_code": "k" }
+      }]
+    },
+    {
+      "description": "Reselect（再選択）",
+      "manipulators": [{
+        "conditions":[{
+          "type":"device_if",
+          "identifiers":[{
+            "product_id": 555,
+            "vendor_id":5426
+          }]
+        }],
+        "type": "basic",
+        "from": { "key_code": "3" },
+        "to": { "key_code": "d", "modifiers": ["left_shift", "left_command"] }
+      }]
+    },
+    {
+      "description": "Deselect（選択解除）",
+      "manipulators": [{
+        "conditions":[{
+          "type":"device_if",
+          "identifiers":[{
+            "product_id": 555,
+            "vendor_id":5426
+          }]
+        }],
+        "type": "basic",
+        "from": { "key_code": "4" },
+        "to": { "key_code": "d", "modifiers": "left_command" }
+      }]
+    },
+    {
+      "description": "Selection area（選択）",
+      "manipulators": [{
+        "conditions":[{
+          "type":"device_if",
+          "identifiers":[{
+            "product_id": 555,
+            "vendor_id":5426
+          }]
+        }],
+        "type": "basic",
+        "from": { "key_code": "e" },
+        "to": { "key_code": "m" }
+      }]
+    },
+    {
+      "description": "Fill（塗りつぶし）",
+      "manipulators": [{
+        "conditions":[{
+          "type":"device_if",
+          "identifiers":[{
+            "product_id": 555,
+            "vendor_id":5426
+          }]
+        }],
+        "type": "basic",
+        "from": { "key_code": "5" },
+        "to": { "key_code": "delete_or_backspace", "modifiers": "right_option" }
+      }]
+    },
+    {
+      "description": "Tool propaty palette",
+      "_comment": "No shortcut assignment by default",
+      "manipulators": [{
+        "conditions":[{
+          "type":"device_if",
+          "identifiers":[{
+            "product_id": 555,
+            "vendor_id":5426
+          }]
+        }],
+        "type": "basic",
+        "from": { "key_code": "s" },
+        "to": { "key_code": "f3" }
+      }]
+    },
+    {
+      "description": "SubTool palette",
+      "_comment": "No shortcut assignment by default",
+      "manipulators": [{
+        "conditions":[{
+          "type":"device_if",
+          "identifiers":[{
+            "product_id": 555,
+            "vendor_id":5426
+          }]
+        }],
+        "type": "basic",
+        "from": { "key_code": "z" },
+        "to": { "key_code": "f2" }
+      }]
+    },
+    {
+      "description": "QuickAccess（クイックアクセス）",
+      "_comment": "No shortcut assignment by default",
+      "manipulators": [{
+        "conditions":[{
+          "type":"device_if",
+          "identifiers":[{
+            "product_id": 555,
+            "vendor_id":5426
+          }]
+        }],
+        "type": "basic",
+        "from": { "key_code": "x" },
+        "to": { "key_code": "f1" }
+      }]
+    },
+    {
+      "description": "Eyedropper（スポイト）",
+      "manipulators": [{
+        "conditions":[{
+          "type":"device_if",
+          "identifiers":[{
+            "product_id": 555,
+            "vendor_id":5426
+          }]
+        }],
+        "type": "basic",
+        "from": { "key_code": "caps_lock" },
+        "to": { "key_code": "i" }
+      }]
+    },
+    {
+      "description": "Toggle drawing color and transparent color（描画色と透明色の切り替え）",
+      "manipulators": [{
+        "conditions":[{
+          "type":"device_if",
+          "identifiers":[{
+            "product_id": 555,
+            "vendor_id":5426
+          }]
+        }],
+        "type": "basic",
+        "from": { "key_code": "a" },
+        "to": { "key_code": "c" }
+      }]
+    },
+    {
+      "description": "Toggle main color and sub color（メインカラーとサブカラーの切り替え）",
+      "manipulators": [{
+        "conditions":[{
+          "type":"device_if",
+          "identifiers":[{
+            "product_id": 555,
+            "vendor_id":5426
+          }]
+        }],
+        "type": "basic",
+        "from": { "key_code": "tab" },
+        "to": { "key_code": "x" }
+      }]
+    },
+    {
+      "description": "Toggle on and off of color mixing（下地混色のon,off）",
+      "_comment": "No shortcut assignment by default",
+      "manipulators": [{
+        "conditions":[{
+          "type":"device_if",
+          "identifiers":[{
+            "product_id": 555,
+            "vendor_id":5426
+          }]
+        }],
+        "type": "basic",
+        "from": { "key_code": "r" },
+        "to": { "key_code": "f5" }
+      }]
+    },
+    {
+      "description": "Select brush preset size to small from current",
+      "manipulators": [{
+        "conditions":[{
+          "type":"device_if",
+          "identifiers":[{
+            "product_id": 555,
+            "vendor_id":5426
+          }]
+        }],
+        "type": "basic",
+        "from": { "key_code": "up_arrow" },
+        "to": { "key_code": "open_bracket" }
+      }]
+    },
+    {
+      "description": "Select brush preset size to large from current",
+      "manipulators": [{
+        "conditions":[{
+          "type":"device_if",
+          "identifiers":[{
+            "product_id": 555,
+            "vendor_id":5426
+          }]
+        }],
+        "type": "basic",
+        "from": { "key_code": "down_arrow" },
+        "to": { "key_code": "close_bracket" }
+      }]
+    },
+    {
+      "description": "Undo（取り消し）",
+      "manipulators": [{
+        "conditions":[{
+          "type":"device_if",
+          "identifiers":[{
+            "product_id": 555,
+            "vendor_id":5426
+          }]
+        }],
+        "type": "basic",
+        "from": { "key_code": "left_arrow" },
+        "to": { "key_code": "z", "modifiers": ["left_command"] }
+      }]
+    },
+    {
+      "description": "Redo（やり直し）",
+      "manipulators": [{
+        "conditions":[{
+          "type":"device_if",
+          "identifiers":[{
+            "product_id": 555,
+            "vendor_id":5426
+          }]
+        }],
+        "type": "basic",
+        "from": { "key_code": "right_arrow" },
+        "to": { "key_code": "y", "modifiers": ["left_command"] }
+      }]
+    },
+    {
+      "description": "Save（上書き保存）",
+      "manipulators": [{
+        "conditions":[{
+          "type":"device_if",
+          "identifiers":[{
+            "product_id": 555,
+            "vendor_id":5426
+          }]
+        }],
+        "type": "basic",
+        "from": { "key_code": "spacebar" },
+        "to": { "key_code": "s", "modifiers": ["left_command"] }
+      }]
+    }
+  ]
+}
