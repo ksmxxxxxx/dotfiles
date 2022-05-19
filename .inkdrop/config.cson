@@ -4,9 +4,9 @@
       machineId: "3ROy79ZY_"
     devMode: true
     lastNavigationState:
-      editingNoteId: "note:J81ObNTlz"
+      editingNoteId: "note:eaFM3Q5lP2"
       queryContext:
-        bookId: "book:F4lu13uWe"
+        bookId: "book:AfqSUl8Gy"
         filterKeyword: ""
         includeChildren: false
         mode: "book"
@@ -21,13 +21,13 @@
       noteListBar:
         w: 253
       position:
-        x: 61
-        y: 540
+        x: 1351
+        y: 506
       sideBar:
         visible: false
       size:
-        h: 877
-        w: 1187
+        h: 934
+        w: 1148
     themes: [
       "iceberg-syntax"
       "iceberg-preview"
@@ -36,7 +36,6 @@
   editor:
     fontFamily: "Ricty,SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace"
     fontSize: 14
-    showInvisibles: true
     styleActiveLine: true
     unorderedListBullet: "-"
     viewMode: "edit"
