@@ -7,27 +7,35 @@ depends = ['denops.vim']
 hook_add = '''
 nnoremap s<Space> <Cmd>Ddu file file_rec -ui-param-startFilter=v:true<CR>
 nnoremap b<Space> <Cmd>Ddu buffer -ui-param-startFilter=v:false<CR>
+nnoremap g<Space> <Cmd>Ddu rg -ui-param-startFilter=v:true<CR>
 '''
 hook_source = '''
 call ddu#custom#patch_global({
     \  'ui': 'ff',
+    \  'volatile': v:true,
     \  'sources': [
     \    {'name': 'file'},
     \    {'name': 'file_rec'},
     \    {'name': 'buffer'},
     \    {'name': 'register'},
+    \    {'name': 'rg'},
     \  ],
     \  'sourceOptions': {
     \    '_': {
     \      'matchers': ['matcher_substring'],
     \    },
     \    'file_rec': { 'matchers': ['matcher_substring', 'matcher_hidden'] },
+    \    'rg': { 'matchers': [] },
     \  },
     \  'kindOptions': {
     \    'file': {
     \      'defaultAction': 'open',
     \    },
     \  },
+    \  'uiParams': {'ff': {
+    \    'ignoreEmpty': v:false,
+    \    'autoResize': v:false,
+    \  }},
     \})
 '''
 
