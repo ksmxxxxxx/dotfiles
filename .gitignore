@@ -1,2 +1,4 @@
 .vim/
 .inkdrop/config.cson
+nvim/denite.toml
+nvim/deoplete.toml
