@@ -121,19 +121,78 @@ repo = 'Shougo/ddc-sorter_rank'
 on_source = 'ddc.vim'
 
 [[plugins]]
+repo = 'Shougo/ddc-nvim-lsp'
+on_source = 'nvim-lspconfig'
+
+[[plugins]]
+repo = 'LumaKernel/ddc-file'
+
+[[plugins]]
+repo = 'statiolake/ddc-ale'
+on_source = 'ddc.vim'
+
+# [[plugins]]
+# repo = 'hrsh7th/vim-vsnip'
+# on_event = 'InsertEnter'
+# depends = ['vim-vsnip-integ', 'friendly-snippets']
+# hook_add = '''
+#  imap <expr> <C-j> vsnip#expandable() ? '<Plug>(vsnip-expand)' : '<C-j>'
+#  smap <expr> <C-j> vsnip#expandable() ? '<Plug>(vsnip-expand)' : '<C-j>'
+#  imap <expr> <C-f> vsnip#jumpable(1)  ? '<Plug>(vsnip-jump-next)' : '<C-f>'
+#  smap <expr> <C-f> vsnip#jumpable(1)  ? '<Plug>(vsnip-jump-next)' : '<C-f>'
+#  imap <expr> <C-b> vsnip#jumpable(-1) ? '<Plug>(vsnip-jump-prev)' : '<C-b>'
+#  smap <expr> <C-b> vsnip#jumpable(-1) ? '<Plug>(vsnip-jump-prev)' : '<C-b>'
+#  let g:vsnip_filetypes = {}
+#  '''
+# 
+# [[plugins]]
+# repo = 'hrsh7th/vim-vsnip-integ'
+# 
+# [[plugins]]
+# repo = 'rafamadriz/friendly-snippets'
+
+# -------------------
+# Language Server
+# -------------------
+[[plugins]]
+repo = 'neovim/nvim-lspconfig'
+on_ft = ['ruby', 'html', 'css', 'scss']
+depends = 'ddc.vim'
+hook_source = '''
+lua << EOF
+--Enable (broadcasting) snippet capability for completion
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+require'lspconfig'.html.setup{
+  capabilities = capabilities,
+}
+require'lspconfig'.solargraph.setup{
+  settings = {
+    solargraph = {
+      diagnostics = false
+    }
+  }
+}
+EOF
+'''
+
+[[plugins]]
 repo = 'Shougo/ddc.vim'
 on_event = 'InsertEnter'
 depends = ['denops.vim']
 hook_source = '''
-call ddc#custom#patch_global('sources', ['around', 'buffer'])
+call ddc#custom#patch_global('sources', ['around', 'buffer', 'nvim-lsp', 'file', 'vsnip', 'ale'])
 call ddc#custom#patch_global('sourceOptions', {
     \ '_': {
     \ 'matchers': ['matcher_head'],
     \ 'sorters': ['sorter_rank'],
     \ 'converters': ['converter_remove_overlap'],
     \ },
-    \ 'around': {'mark': 'A'},
-    \ 'buffer': {'mark': 'B'},
+    \ 'around':   {'mark': 'Around'},
+    \ 'buffer':   {'mark': 'Buffer'},
+    \ 'file':     {'mark': 'File', 'isVolatile': v:true, 'forceCompletionPattern': '\S/\S*'},
+    \ 'nvim-lsp': {'mark': 'LSP', 'forceCompletionPattern': '\.\w*|:\w*|->\w*'},
     \ })
 call ddc#custom#patch_global('sourceParams', {
     \ 'around': {'maxSize': 500},
@@ -144,6 +203,18 @@ call ddc#custom#patch_global('sourceParams', {
     \     'forceCollect': v:true,
     \   }
     \ })
+call ddc#custom#patch_filetype(
+    \ ['ps1', 'dosbatch', 'autohotkey', 'registry'], {
+    \ 'sourceOptions': {
+    \   'file': {
+    \     'forceCompletionPattern': '\S\\\S*',
+    \   },
+    \ },
+    \ 'sourceParams': {
+    \   'file': {
+    \     'mode': 'win32',
+    \   },
+    \ }})
 
 " <TAB>: completion.
 inoremap <silent><expr> <TAB>
