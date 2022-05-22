@@ -1,5 +1,15 @@
 # show commit ID
 set main-view = id date author commit-title:graph=yes,refs=yes
+#
+set blame-view  = date:default author:email-user id:yes,color line-number:yes,interval=1 text
+set diff-view   = line-number:yes,interval=1 text:yes,commit-title-overflow=no
 
 # split view set
-# set vertical-split = no
+set vertical-split = no
+#
+# display line number
+set blob-view-line-number = yes
+
+color cursor      default  color0
+color title-focus black  white
+color title-blur  color8 white
