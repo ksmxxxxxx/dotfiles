@@ -128,35 +128,23 @@ on_source = 'nvim-lspconfig'
 repo = 'LumaKernel/ddc-file'
 
 [[plugins]]
-repo = 'statiolake/ddc-ale'
-on_source = 'ddc.vim'
+repo = 'dNitro/vim-pug-complete'
 
-# [[plugins]]
-# repo = 'hrsh7th/vim-vsnip'
-# on_event = 'InsertEnter'
-# depends = ['vim-vsnip-integ', 'friendly-snippets']
-# hook_add = '''
-#  imap <expr> <C-j> vsnip#expandable() ? '<Plug>(vsnip-expand)' : '<C-j>'
-#  smap <expr> <C-j> vsnip#expandable() ? '<Plug>(vsnip-expand)' : '<C-j>'
-#  imap <expr> <C-f> vsnip#jumpable(1)  ? '<Plug>(vsnip-jump-next)' : '<C-f>'
-#  smap <expr> <C-f> vsnip#jumpable(1)  ? '<Plug>(vsnip-jump-next)' : '<C-f>'
-#  imap <expr> <C-b> vsnip#jumpable(-1) ? '<Plug>(vsnip-jump-prev)' : '<C-b>'
-#  smap <expr> <C-b> vsnip#jumpable(-1) ? '<Plug>(vsnip-jump-prev)' : '<C-b>'
-#  let g:vsnip_filetypes = {}
-#  '''
-# 
-# [[plugins]]
-# repo = 'hrsh7th/vim-vsnip-integ'
-# 
-# [[plugins]]
-# repo = 'rafamadriz/friendly-snippets'
+[[plugins]]
+repo = 'rhysd/github-complete.vim'
+
+[[plugins]]
+repo = 'Shougo/pum.vim'
+hook_source = '''
+  call pum#set_option('max_width', 80)
+'''
 
 # -------------------
 # Language Server
 # -------------------
 [[plugins]]
 repo = 'neovim/nvim-lspconfig'
-on_ft = ['ruby', 'html', 'css', 'scss']
+on_ft = ['ruby', 'html', 'css', 'scss', 'javascript']
 depends = 'ddc.vim'
 hook_source = '''
 lua << EOF
@@ -167,6 +155,13 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true
 require'lspconfig'.html.setup{
   capabilities = capabilities,
 }
+
+require'lspconfig'.cssls.setup{
+  capabilities = capabilities,
+}
+
+require'lspconfig'.tsserver.setup{}
+
 require'lspconfig'.solargraph.setup{
   settings = {
     solargraph = {
@@ -182,17 +177,17 @@ repo = 'Shougo/ddc.vim'
 on_event = 'InsertEnter'
 depends = ['denops.vim']
 hook_source = '''
-call ddc#custom#patch_global('sources', ['around', 'buffer', 'nvim-lsp', 'file', 'vsnip', 'ale'])
+call ddc#custom#patch_global('sources', ['around', 'buffer', 'nvim-lsp', 'file'])
 call ddc#custom#patch_global('sourceOptions', {
     \ '_': {
-    \ 'matchers': ['matcher_head'],
-    \ 'sorters': ['sorter_rank'],
+    \ 'matchers':   ['matcher_head'],
+    \ 'sorters':    ['sorter_rank'],
     \ 'converters': ['converter_remove_overlap'],
     \ },
-    \ 'around':   {'mark': 'Around'},
-    \ 'buffer':   {'mark': 'Buffer'},
-    \ 'file':     {'mark': 'File', 'isVolatile': v:true, 'forceCompletionPattern': '\S/\S*'},
-    \ 'nvim-lsp': {'mark': 'LSP', 'forceCompletionPattern': '\.\w*|:\w*|->\w*'},
+    \ 'around':       {'mark': 'Around'},
+    \ 'buffer':       {'mark': 'Buffer'},
+    \ 'file':         {'mark': 'File', 'isVolatile': v:true, 'forceCompletionPattern': '\S/\S*'},
+    \ 'nvim-lsp':     {'mark': 'LSP', 'forceCompletionPattern': '\.\w*|:\w*|->\w*'}
     \ })
 call ddc#custom#patch_global('sourceParams', {
     \ 'around': {'maxSize': 500},
@@ -216,16 +211,15 @@ call ddc#custom#patch_filetype(
     \   },
     \ }})
 
-" <TAB>: completion.
+set completeopt-=preview
+
 inoremap <silent><expr> <TAB>
 \ ddc#map#pum_visible() ? '<C-n>' :
 \ (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ?
 \ '<TAB>' : ddc#map#manual_complete()
 
-" <S-TAB>: completion back.
 inoremap <expr><S-TAB>  ddc#map#pum_visible() ? '<C-p>' : '<C-h>'
 
-" Use ddc.
 call ddc#enable()
 '''
 
