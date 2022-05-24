@@ -16,12 +16,12 @@ repo = 'Shougo/vimfiler'
 repo = 'cocopon/iceberg.vim'
 hook_add = '''
   set termguicolors
-  color iceberg
+  autocmd VimEnter * nested colorscheme iceberg
+  autocmd colorscheme * highlight Normal      ctermbg=NONE guibg=NONE
+  autocmd colorscheme * highlight NonText     ctermbg=NONE guibg=NONE
+  autocmd colorscheme * highlight Folded      ctermbg=NONE guibg=NONE
+  autocmd colorscheme * highlight EndOfBuffer ctermbg=NONE guibg=NONE
   syntax on
-  highlight Normal ctermbg=NONE guibg=NONE
-  highlight NonText ctermbg=NONE guibg=NONE
-  highlight Folded ctermbg=NONE guibg=NONE
-  highlight EndOfBuffer ctermbg=NONE guibg=NONE
 '''
 
 [[plugins]]
