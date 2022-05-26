@@ -121,11 +121,12 @@ repo = 'Shougo/ddc-sorter_rank'
 on_source = 'ddc.vim'
 
 [[plugins]]
-repo = 'Shougo/ddc-nvim-lsp'
-on_source = 'nvim-lspconfig'
+repo = 'LumaKernel/ddc-file'
+on_source = 'ddc.vim'
 
 [[plugins]]
-repo = 'LumaKernel/ddc-file'
+repo = 'statiolake/ddc-ale'
+on_source = 'ddc.vim'
 
 [[plugins]]
 repo = 'dNitro/vim-pug-complete'
@@ -142,6 +143,10 @@ hook_source = '''
 # -------------------
 # Language Server
 # -------------------
+[[plugins]]
+repo = 'Shougo/ddc-nvim-lsp'
+on_source = 'nvim-lspconfig'
+
 [[plugins]]
 repo = 'neovim/nvim-lspconfig'
 on_ft = ['ruby', 'html', 'css', 'scss', 'javascript']
@@ -177,17 +182,17 @@ repo = 'Shougo/ddc.vim'
 on_event = 'InsertEnter'
 depends = ['denops.vim']
 hook_source = '''
-call ddc#custom#patch_global('sources', ['around', 'buffer', 'nvim-lsp', 'file'])
+call ddc#custom#patch_global('sources', ['around', 'buffer', 'file', 'nvim-lsp', 'ale'])
 call ddc#custom#patch_global('sourceOptions', {
     \ '_': {
     \ 'matchers':   ['matcher_head'],
     \ 'sorters':    ['sorter_rank'],
     \ 'converters': ['converter_remove_overlap'],
     \ },
-    \ 'around':       {'mark': 'Around'},
-    \ 'buffer':       {'mark': 'Buffer'},
-    \ 'file':         {'mark': 'File', 'isVolatile': v:true, 'forceCompletionPattern': '\S/\S*'},
-    \ 'nvim-lsp':     {'mark': 'LSP', 'forceCompletionPattern': '\.\w*|:\w*|->\w*'}
+    \ 'around':   {'mark': 'Around'},
+    \ 'buffer':   {'mark': 'Buffer'},
+    \ 'file':     {'mark': 'File', 'isVolatile': v:true, 'forceCompletionPattern': '\S/\S*'},
+    \ 'nvim-lsp': {'mark': 'LSP', 'forceCompletionPattern': '\.\w*|:\w*|->\w*'}
     \ })
 call ddc#custom#patch_global('sourceParams', {
     \ 'around': {'maxSize': 500},
@@ -196,7 +201,8 @@ call ddc#custom#patch_global('sourceParams', {
     \     'limitBytes': 5000000,
     \     'fromAltBuf': v:true,
     \     'forceCollect': v:true,
-    \   }
+    \   },
+    \ 'ale': { 'ale': {'cleanResultsWhitespace': v:false} }
     \ })
 call ddc#custom#patch_filetype(
     \ ['ps1', 'dosbatch', 'autohotkey', 'registry'], {
