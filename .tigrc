@@ -10,6 +10,6 @@ set vertical-split = no
 # display line number
 set blob-view-line-number = yes
 
-color cursor      default  color0
+color cursor      white  color8
 color title-focus black  white
 color title-blur  color8 white
