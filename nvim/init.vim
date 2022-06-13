@@ -4,6 +4,28 @@ let g:ruby_host_prog = '$HOME/.rbenv/versions/3.1.2/bin/neovim-ruby-host'
 let g:loaded_node_provider = 0
 let g:loaded_perl_provider = 0
 
+" Default setting ================================================
+filetype on
+filetype plugin on
+filetype indent on
+
+set termguicolors
+set nobackup
+set noswapfile
+set autoindent
+set clipboard+=unnamed
+
+autocmd colorscheme * highlight Normal      ctermbg=NONE guibg=NONE
+autocmd colorscheme * highlight NonText     ctermbg=NONE guibg=NONE
+autocmd colorscheme * highlight Folded      ctermbg=NONE guibg=NONE
+autocmd colorscheme * highlight EndOfBuffer ctermbg=NONE guibg=NONE
+
+if has('persistent_undo')
+  let undo_path = expand('~/.cache/nvim/undo')
+  exe 'set undodir=' .. undo_path
+  set undofile
+endif
+
 " dein Scripts ===================================================
 let s:config_dir = expand('$XDG_CONFIG_HOME/nvim')
 set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
@@ -22,27 +44,15 @@ if dein#check_install()
   call dein#install()
 endif
 
+syntax enable
+colorscheme iceberg
+
+
 " Read rc file ===================================================
 " Scrapbox script
 let s:scrapbox_rc = expand(s:config_dir . '/rc/scrapbox.rc.vim')
 if filereadable('~/.config/nvim/rc/scrapbox.rc.vim')
   source ~/.config/nvim/rc/scrapbox.rc.vim
-endif
-
-" Default setting ================================================
-filetype on
-filetype plugin on
-filetype indent on
-
-set nobackup
-set noswapfile
-set autoindent
-set clipboard+=unnamed
-
-if has('persistent_undo')
-  let undo_path = expand('~/.cache/nvim/undo')
-  exe 'set undodir=' .. undo_path
-  set undofile
 endif
 
 " ChangeLog ======================================================

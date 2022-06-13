@@ -14,15 +14,6 @@ repo = 'Shougo/vimfiler'
 
 [[plugins]]
 repo = 'cocopon/iceberg.vim'
-hook_add = '''
-  set termguicolors
-  autocmd VimEnter * nested colorscheme iceberg
-  autocmd colorscheme * highlight Normal      ctermbg=NONE guibg=NONE
-  autocmd colorscheme * highlight NonText     ctermbg=NONE guibg=NONE
-  autocmd colorscheme * highlight Folded      ctermbg=NONE guibg=NONE
-  autocmd colorscheme * highlight EndOfBuffer ctermbg=NONE guibg=NONE
-  syntax on
-'''
 
 [[plugins]]
 repo = 'nathanaelkane/vim-indent-guides'
