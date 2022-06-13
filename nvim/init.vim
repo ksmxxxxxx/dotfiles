@@ -31,6 +31,9 @@ endif
 
 " Default setting ================================================
 filetype on
+filetype plugin on
+filetype indent on
+
 set nobackup
 set noswapfile
 set autoindent
@@ -70,32 +73,33 @@ set guifont=:h
 set fileencoding=utf-8
 set fileformats=unix,dos,mac
 if has("autocmd")
-  autocmd FileType html,xhtml,css,javascript,yaml,ruby,coffee,haml,slim,scss,pug setlocal ts=2 sts=2 sw=2
+  autocmd FileType html,xhtml,css,javascript,yaml,ruby,coffee,haml,slim,scss,sass,pug setlocal ts=2 sts=2 sw=2
 
-  autocmd BufNewFile,BufRead *.js setlocal ft=javascript
-  autocmd BufNewFile,BufRead *.ejs setlocal ft=html
-  autocmd BufNewFile,BufRead *.py setlocal ft=python
-  autocmd BufNewFile,BufRead *.rb setlocal ft=ruby
-  autocmd BufNewFile,BufRead Gemfile setlocal ft=ruby
-  autocmd BufNewFile,BufRead *.coffee setlocal ft=coffee
-  autocmd BufNewFile,BufRead *.slim setlocal ft=slim
-  autocmd BufNewFile,BufRead *.haml setlocal ft=haml
-  autocmd BufNewFile,BufRead *.ts setlocal ft=typescript
-  autocmd BufNewFile,BufReadPost *.md set ft=markdown
-  autocmd BufNewFile,BufRead *.toml setlocal ft=toml
-  autocmd BufNewFile,BufRead *.vim setlocal ft=vim
-  autocmd BufNewFile,BufRead *.jade setlocal ft=markdown
-  autocmd BufNewFile,BufRead *.gyp setlocal ft=json
-  autocmd BufNewFile,BufRead *.cson setlocal ft=json
-  autocmd BufNewFile,BufRead *.yml setlocal ft=yaml
-  autocmd BufNewFile,BufRead *.yaml setlocal ft=yaml
-  autocmd BufNewFile,BufRead *.erb set ft=html
-  autocmd BufNewFile,BufRead *.html.erb set ft=html
-  autocmd BufNewFile,BufRead *.js.erb set ft=javascript
-  autocmd BufNewFile,BufRead *.es6.erb set ft=javascript
-  autocmd BufNewFile,BufRead *.css.erb set ft=css
-  autocmd BufNewFile,BufRead *.scss.erb set ft=scss
-  autocmd BufNewFile,BufRead *.pug set ft=pug
+  autocmd BufNewFile,BufRead *.js       set filetype=javascript
+  autocmd BufNewFile,BufRead *.ejs      set filetype=html
+  autocmd BufNewFile,BufRead *.py       set filetype=python
+  autocmd BufNewFile,BufRead *.rb       set filetype=ruby
+  autocmd BufNewFile,BufRead Gemfile    set filetype=ruby
+  autocmd BufNewFile,BufRead *.coffee   set filetype=coffee
+  autocmd BufNewFile,BufRead *.slim     set filetype=slim
+  autocmd BufNewFile,BufRead *.haml     set filetype=haml
+  autocmd BufNewFile,BufRead *.ts       set filetype=typescript
+  autocmd BufNewFile,BufRead *.md       set filetype=markdown
+  autocmd BufNewFile,BufRead *.toml     set filetype=toml
+  autocmd BufNewFile,BufRead *.vim      set filetype=vim
+  autocmd BufNewFile,BufRead *.jade     set filetype=markdown
+  autocmd BufNewFile,BufRead *.gyp      set filetype=json
+  autocmd BufNewFile,BufRead *.cson     set filetype=json
+  autocmd BufNewFile,BufRead *.yml      set filetype=yaml
+  autocmd BufNewFile,BufRead *.yaml     set filetype=yaml
+  autocmd BufNewFile,BufRead *.erb      set filetype=html
+  autocmd BufNewFile,BufRead *.html.erb set filetype=html
+  autocmd BufNewFile,BufRead *.js.erb   set filetype=javascript
+  autocmd BufNewFile,BufRead *.es6.erb  set filetype=javascript
+  autocmd BufNewFile,BufRead *.css.erb  set filetype=css
+  autocmd BufNewFile,BufRead *.scss.erb set filetype=scss
+  autocmd BufNewFile,BufRead *.sass     set filetype=sass
+  autocmd BufNewFile,BufRead *.pug      set filetype=pug
 endif
 
 " Keymap setting =================================================
