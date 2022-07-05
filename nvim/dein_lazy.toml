@@ -149,7 +149,7 @@ on_source = 'nvim-lspconfig'
 
 [[plugins]]
 repo = 'neovim/nvim-lspconfig'
-on_ft = ['ruby', 'html', 'css', 'scss', 'javascript']
+on_ft = ['ruby', 'slim', 'html', 'css', 'scss', 'javascript']
 depends = 'ddc.vim'
 hook_source = '''
 lua << EOF
