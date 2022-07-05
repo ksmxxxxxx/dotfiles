@@ -36,3 +36,9 @@ export NVM_DIR="$HOME/.config/nvm"
 alias touchmd='touch $(date +%Y%m%d).md'
 alias repo='cd $(ghq list -p | peco --query "$LBUFFER")'
 alias merged-repo-delete='git branch --merged|egrep -v "\*|develop|main|master"|xargs git branch -d'
+
+alias tm='tmux'
+alias tns='tm new -s'
+alias tat='tm a -t'
+alias tls='tm ls'
+alias tkil='tm kill-session'
