@@ -5,6 +5,9 @@
 		},
 		{
 			"path": "../../github.com/kaigionrails/kaigi-on-rails-2022"
+		},
+		{
+			"path": "../../hatena_blog"
 		}
 	],
 	"settings": {}
