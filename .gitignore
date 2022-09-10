@@ -3,3 +3,4 @@
 .inkdrop/config.cson
 nvim/denite.toml
 nvim/deoplete.toml
+vscode/*.code-workspace
