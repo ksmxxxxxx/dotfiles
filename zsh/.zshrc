@@ -32,6 +32,9 @@ export PATH="$HOME/.rbenv/bin:$PATH"
 export NVM_DIR="$HOME/.config/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
+# Manual install zsh into VS Code
+[[ "$TERM_PROGRAM" == "vscode" ]] && . "$(code --locate-shell-integration-path zsh)"
+
 # alias
 alias touchmd='touch $(date +%Y%m%d).md'
 alias repo='cd $(ghq list -p | peco --query "$LBUFFER")'
