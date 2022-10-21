@@ -36,7 +36,8 @@ export NVM_DIR="$HOME/.config/nvm"
 [[ "$TERM_PROGRAM" == "vscode" ]] && . "$(code --locate-shell-integration-path zsh)"
 
 # alias
-alias touchmd='touch $(date +%Y%m%d).md'
+alias whattimeisit='TZ=-9 date "+%F %T%z"'
+alias touchmd='touch $(date +%Y%m%d%H%M%S).md'
 alias repo='cd $(ghq list -p | peco --query "$LBUFFER")'
 alias merged-repo-delete='git branch --merged|egrep -v "\*|develop|main|master"|xargs git branch -d'
 
