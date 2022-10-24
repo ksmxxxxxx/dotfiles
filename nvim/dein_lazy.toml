@@ -130,6 +130,7 @@ on_source = 'ddc.vim'
 
 [[plugins]]
 repo = 'dNitro/vim-pug-complete'
+on_ft = ['pug', 'jade']
 
 [[plugins]]
 repo = 'rhysd/github-complete.vim'
