@@ -20,6 +20,7 @@
   gr     = grep
   lgo    = log --graph --oneline
   push-f = push --force-with-lease
+  pbcopy = !printf "$1" | pbcopy
 [commit]
   template = ~/.git_commit_template
 [rebase]
@@ -33,3 +34,5 @@
 	process = git-lfs filter-process
 	required = true
 	clean = git-lfs clean -- %f
+[tig "bind"]
+  main = xcc !@git pbcopy %(commit)
