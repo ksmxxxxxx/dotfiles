@@ -145,40 +145,6 @@ hook_source = '''
 # Language Server
 # -------------------
 [[plugins]]
-repo = 'Shougo/ddc-nvim-lsp'
-on_source = 'nvim-lspconfig'
-
-[[plugins]]
-repo = 'neovim/nvim-lspconfig'
-on_ft = ['ruby', 'slim', 'html', 'css', 'scss', 'javascript']
-depends = 'ddc.vim'
-hook_source = '''
-lua << EOF
---Enable (broadcasting) snippet capability for completion
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-
-require'lspconfig'.html.setup{
-  capabilities = capabilities,
-}
-
-require'lspconfig'.cssls.setup{
-  capabilities = capabilities,
-}
-
-require'lspconfig'.tsserver.setup{}
-
-require'lspconfig'.solargraph.setup{
-  settings = {
-    solargraph = {
-      diagnostics = false
-    }
-  }
-}
-EOF
-'''
-
-[[plugins]]
 repo = 'Shougo/ddc.vim'
 on_event = 'InsertEnter'
 depends = ['denops.vim']
@@ -230,6 +196,29 @@ inoremap <expr><S-TAB>  ddc#map#pum_visible() ? '<C-p>' : '<C-h>'
 call ddc#enable()
 '''
 
+[[plugins]]
+repo = 'Shougo/ddc-nvim-lsp'
+on_source = 'nvim-lspconfig'
+
+[[plugins]]
+repo = 'neovim/nvim-lspconfig'
+on_event = 'BufEnter'
+on_ft = ['ruby', 'slim', 'html', 'css', 'scss', 'javascript']
+depends = 'ddc.vim'
+hook_source = '''
+lua << EOF
+local lsp_installer = require("nvim-lsp-installer")
+lsp_installer.on_server_ready(function(server)
+  local opts = {}
+  server:setup(opts)
+end)
+EOF
+'''
+
+[[plugins]]
+repo = 'williamboman/nvim-lsp-installer'
+on_source = 'nvim-lspconfig'
+
 # ============================================================================
 # Syntax
 # ============================================================================
@@ -247,7 +236,7 @@ on_ft = ['json']
 
 [[plugins]]
 repo = 'hail2u/vim-css3-syntax'
-on_ft = ['css', 'scss', 'sass']
+on_ft = ['css', 'scss', 'sass', 'vue']
 
 [[plugins]]
 repo = 'mxw/vim-jsx'
@@ -267,7 +256,11 @@ on_ft = ['haml']
 
 [[plugins]]
 repo = 'digitaltoad/vim-pug'
-on_ft = 'pug'
+on_ft = ['pug', 'vue']
+
+[[plugins]]
+repo = 'posva/vim-vue'
+on_ft = 'vue'
 
 [[plugins]]
 repo = 'cespare/vim-toml'
