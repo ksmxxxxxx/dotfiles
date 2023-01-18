@@ -1,6 +1,7 @@
 'body': {
   'ctrl-1': 'inkdrop-note-templates:crowd-daily'
   'ctrl-2': 'inkdrop-note-templates:fjord-daily'
+  'ctrl-3': 'inkdrop-note-templates:fjord-team-meeting-note'
   'ctrl-[': 'core:toggle-heading-bigger'
   'ctrl-]': 'core:toggle-heading-smaller'
 },
