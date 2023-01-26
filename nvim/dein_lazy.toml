@@ -139,12 +139,6 @@ repo = 'rhysd/github-complete.vim'
 repo = 'Shougo/ddc-ui-native'
 on_source = 'ddc.vim'
 
-[[plugins]]
-repo = 'Shougo/pum.vim'
-hook_source = '''
-  call pum#set_option('max_width', 80)
-'''
-
 # -------------------
 # Language Server
 # -------------------
@@ -191,6 +185,13 @@ call ddc#custom#patch_filetype(
 call ddc#custom#patch_global('ui', 'native')
 
 set completeopt-=preview
+
+inoremap <silent><expr> <TAB>
+\ pumvisible() ? '<C-n>' :
+\ (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ?
+\ '<TAB>' : ddc#map#manual_complete()
+
+inoremap <expr><S-TAB>  pumvisible() ? '<C-p>' : '<C-h>'
 
 call ddc#enable()
 '''
