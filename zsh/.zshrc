@@ -28,10 +28,6 @@ GIT_PS1_SHOWUPSTREAM=auto
 eval "$(rbenv init -)"
 export PATH="$HOME/.rbenv/bin:$PATH"
 
-# Load nvm
-export NVM_DIR="$HOME/.config/nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-
 # Manual install zsh into VS Code
 [[ "$TERM_PROGRAM" == "vscode" ]] && . "$(code --locate-shell-integration-path zsh)"
 
