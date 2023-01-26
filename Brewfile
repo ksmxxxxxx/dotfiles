@@ -37,6 +37,7 @@ brew "git"
 brew "pkg-config"
 brew "gobject-introspection"
 brew "hugo"
+brew "imagemagick"
 brew "jemalloc"
 brew "krb5"
 brew "libffi"
@@ -115,5 +116,7 @@ mas "LastPass", id: 926036361
 mas "Magnet", id: 441258766
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
+mas "RightFont", id: 1475782381
+mas "Slack", id: 803453959
 mas "Textwell", id: 905944937
 mas "Xcode", id: 497799835
