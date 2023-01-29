@@ -47,22 +47,25 @@ on_cmd = 'Ddu'
 [[plugins]]
 repo = 'Shougo/ddu-ui-ff'
 on_source = 'ddu.vim'
-[plugins.ftplugin]
-ddu-ff = '''
-nnoremap <buffer> <CR>
-\ <Cmd>call ddu#ui#ff#do_action('itemAction')<CR>
-nnoremap <buffer> <Space>
-\ <Cmd>call ddu#ui#ff#do_action('toggleSelectItem')<CR>
-nnoremap <buffer> i
-\ <Cmd>call ddu#ui#ff#do_action('openFilterWindow')<CR>
-nnoremap <buffer><silent> q
-\ <Cmd>call ddu#ui#ff#do_action('quit')<CR>
-'''
-ddu-ff-filter = '''
-inoremap <buffer> <CR>
-\ <Esc><Cmd>close<CR>
-nnoremap <buffer> <CR>
-\ <Cmd>close<CR>
+hook_add = '''
+autocmd FileType ddu-ff call s:ddu_ff_my_settings()
+function! s:ddu_ff_my_settings() abort
+  nnoremap <buffer> <CR>
+  \ <Cmd>call ddu#ui#ff#do_action('itemAction')<CR>
+  nnoremap <buffer> <Space>
+  \ <Cmd>call ddu#ui#ff#do_action('toggleSelectItem')<CR>
+  nnoremap <buffer> i
+  \ <Cmd>call ddu#ui#ff#do_action('openFilterWindow')<CR>
+  nnoremap <buffer> q
+  \ <Cmd>call ddu#ui#ff#do_action('quit')<CR>
+endfunction
+autocmd FileType ddu-ff-filter call s:ddu_filter_my_settings()
+function! s:ddu_filter_my_settings() abort
+  inoremap <buffer> <CR>
+  \ <Esc><Cmd>call ddu#ui#ff#close()<CR>
+  nnoremap <buffer> <CR>
+  \ <Cmd><Cmd>call ddu#ui#ff#close()<CR>
+endfunction
 '''
 
 [[plugins]]
