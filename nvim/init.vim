@@ -128,10 +128,11 @@ nnoremap bL <C-w>L
 nnoremap bH <C-w>H
 nnoremap bn gt
 nnoremap bp gT
+nnoremap bc <C-w>c
 nnoremap br <C-w>r
 nnoremap b= <C-w>+
 nnoremap b- <C-w>-
-"nnoremap sw <C-w>w
+nnoremap bw <C-w>w
 nnoremap bo <C-w>>
 nnoremap bO <C-w><
 nnoremap bn :<C-u>bn<CR>
