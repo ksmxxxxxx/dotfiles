@@ -69,7 +69,7 @@ set list
 set hlsearch
 set ts=2 sw=2 expandtab
 set backspace=indent,eol,start
-set regexpengine=1
+set regexpengine=2
 set diffopt=vertical
 set nofoldenable
 if has('conceal')
