@@ -10,9 +10,6 @@ repo = 'Shougo/neomru.vim'
 on_path = '.*'
 
 [[plugins]]
-repo = 'Shougo/vimfiler'
-
-[[plugins]]
 repo = 'cocopon/iceberg.vim'
 
 [[plugins]]
