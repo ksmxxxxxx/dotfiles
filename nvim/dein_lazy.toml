@@ -264,6 +264,10 @@ on_ft = ['pug', 'vue']
 [[plugins]]
 repo = 'posva/vim-vue'
 on_ft = 'vue'
+hook_post_source = '''
+autocmd FileType vue syntax sync fromstart
+let g:vue_pre_processors = ['pug', 'scss', 'javascript', 'html']
+'''
 
 [[plugins]]
 repo = 'cespare/vim-toml'

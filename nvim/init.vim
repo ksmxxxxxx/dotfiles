@@ -110,6 +110,7 @@ if has("autocmd")
   autocmd BufNewFile,BufRead *.scss.erb set filetype=scss
   autocmd BufNewFile,BufRead *.sass     set filetype=sass
   autocmd BufNewFile,BufRead *.pug      set filetype=pug
+  autocmd BufNewFile,BufRead *.vue      set filetype=vue
 endif
 
 " Keymap setting =================================================
