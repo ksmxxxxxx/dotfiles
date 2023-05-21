@@ -200,27 +200,8 @@ call ddc#enable()
 '''
 
 [[plugins]]
-repo = 'Shougo/ddc-nvim-lsp'
-on_source = 'nvim-lspconfig'
-
-[[plugins]]
-repo = 'neovim/nvim-lspconfig'
-on_event = 'BufEnter'
-on_ft = ['ruby', 'slim', 'html', 'css', 'scss', 'javascript', 'vue']
-depends = 'ddc.vim'
-hook_source = '''
-lua << EOF
-local lsp_installer = require("nvim-lsp-installer")
-lsp_installer.on_server_ready(function(server)
-  local opts = {}
-  server:setup(opts)
-end)
-EOF
-'''
-
-[[plugins]]
-repo = 'williamboman/nvim-lsp-installer'
-on_source = 'nvim-lspconfig'
+repo = 'Shougo/ddc-source-nvim-lsp'
+on_source = 'ddc.vim'
 
 # ============================================================================
 # Syntax
@@ -270,12 +251,16 @@ let g:vue_pre_processors = ['pug', 'scss', 'javascript', 'html']
 '''
 
 [[plugins]]
+repo = 'lepture/vim-jinja'
+on_ft = ['jinja', 'njk']
+
+[[plugins]]
 repo = 'cespare/vim-toml'
 on_ft = [ 'toml' ]
 
 [[plugins]]
 repo = 'mattn/emmet-vim'
-on_ft = ['css', 'scss', 'html', 'vue']
+on_ft = ['css', 'scss', 'html', 'vue', 'liquid']
 hook_add = '''
 let g:user_emmet_settings = {
 \  'variables': {'lang': 'ja'},
