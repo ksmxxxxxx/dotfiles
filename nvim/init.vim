@@ -111,6 +111,7 @@ if has("autocmd")
   autocmd BufNewFile,BufRead *.sass     set filetype=sass
   autocmd BufNewFile,BufRead *.pug      set filetype=pug
   autocmd BufNewFile,BufRead *.vue      set filetype=vue
+  autocmd BufNewFile,BufRead *.njk      set filetype=jinja
 endif
 
 " Keymap setting =================================================
