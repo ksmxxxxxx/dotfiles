@@ -149,7 +149,7 @@ inoremap [<Enter> [<CR><CR>]<ESC>ki<TAB>
 inoremap (<Enter> (<CR><CR>)<ESC>ki<TAB>
 
 " 相対ファイルパスをクリップボードにリダイレクト
-nnoremap xcc :let @* = expand('%')<CR>
+nnoremap ,xc :let @* = expand('%')<CR>
 
 augroup MyXML
   autocmd!
