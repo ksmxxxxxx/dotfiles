@@ -78,7 +78,7 @@ call ddu#custom#patch_global({
     \  'uiParams': {'ff': {
     \    'ignoreEmpty': v:false,
     \    'autoResize': v:false,
-    \    'prompt': 'Pattern: ',
+    \    'prompt': '▶ ',
     \  }},
     \})
 
@@ -91,7 +91,7 @@ call ddu#custom#patch_local('grep', {
     \   'uiParams': {
     \     'ff': {
     \       'startFilter': v:false,
-    \       'prompt': 'Pattern: ',
+    \       'prompt': '▶ ',
     \     }
     \   },
     \ })
