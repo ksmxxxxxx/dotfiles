@@ -4,3 +4,5 @@
 nvim/denite.toml
 nvim/deoplete.toml
 vscode/*.code-workspace
+zsh/.zprezto
+zsh/.zsh_history

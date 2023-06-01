@@ -11,13 +11,16 @@
     "editor.fontFamily": "Ricty",
     "editor.tabSize": 2,
     "editor.autoClosingQuotes": "always",
-    "editor.wordWrap": "wordWrapColumn",
     "editor.autoClosingBrackets": "always",
     "editor.autoClosingOvertype": "always",
     "files.autoSave": "onFocusChange",
     "[markdown]": {
         "editor.wordWrap": "on",
-        "editor.quickSuggestions": true,
+        "editor.quickSuggestions": {
+            "comments": "on",
+            "strings": "on",
+            "other": "on"
+        },
         "editor.snippetSuggestions": "top",
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
@@ -84,5 +87,6 @@
         },
         "scminput": true,
         "git-commit": true
-    }
+    },
+    "terminal.integrated.fontSize": 14
 }

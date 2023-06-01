@@ -69,7 +69,7 @@ set list
 set hlsearch
 set ts=2 sw=2 expandtab
 set backspace=indent,eol,start
-set regexpengine=1
+set regexpengine=2
 set diffopt=vertical
 set nofoldenable
 if has('conceal')
@@ -110,6 +110,8 @@ if has("autocmd")
   autocmd BufNewFile,BufRead *.scss.erb set filetype=scss
   autocmd BufNewFile,BufRead *.sass     set filetype=sass
   autocmd BufNewFile,BufRead *.pug      set filetype=pug
+  autocmd BufNewFile,BufRead *.vue      set filetype=vue
+  autocmd BufNewFile,BufRead *.njk      set filetype=jinja
 endif
 
 " Keymap setting =================================================
@@ -145,6 +147,9 @@ nnoremap bv :<C-u>vs<CR>
 inoremap {<Enter> {<CR><CR>}<ESC>ki<TAB>
 inoremap [<Enter> [<CR><CR>]<ESC>ki<TAB>
 inoremap (<Enter> (<CR><CR>)<ESC>ki<TAB>
+
+" 相対ファイルパスをクリップボードにリダイレクト
+nnoremap ,xc :let @* = expand('%')<CR>
 
 augroup MyXML
   autocmd!

@@ -2,70 +2,6 @@
 # User Interface
 # ============================================================================
 [[plugins]]
-repo = 'Shougo/ddu.vim'
-depends = ['denops.vim']
-hook_add = '''
-nnoremap s<Space> <Cmd>Ddu file file_rec -ui-param-startFilter=v:true<CR>
-nnoremap b<Space> <Cmd>Ddu buffer -ui-param-startFilter=v:false<CR>
-nnoremap g<Space> <Cmd>Ddu rg -ui-param-startFilter=v:true<CR>
-'''
-hook_source = '''
-call ddu#custom#patch_global({
-    \  'ui': 'ff',
-    \  'volatile': v:true,
-    \  'sources': [
-    \    {'name': 'file'},
-    \    {'name': 'file_rec'},
-    \    {'name': 'buffer'},
-    \    {'name': 'register'},
-    \    {'name': 'rg'},
-    \  ],
-    \  'sourceOptions': {
-    \    '_': {
-    \      'matchers': ['matcher_substring'],
-    \    },
-    \    'file_rec': { 'matchers': ['matcher_substring', 'matcher_hidden'] },
-    \    'rg': { 'matchers': [] },
-    \  },
-    \  'kindOptions': {
-    \    'file': {
-    \      'defaultAction': 'open',
-    \    },
-    \  },
-    \  'uiParams': {'ff': {
-    \    'ignoreEmpty': v:false,
-    \    'autoResize': v:false,
-    \  }},
-    \})
-'''
-
-[[plugins]]
-repo = 'Shougo/ddu-commands.vim'
-on_source ='ddu.vim'
-on_cmd = 'Ddu'
-
-[[plugins]]
-repo = 'Shougo/ddu-ui-ff'
-on_source = 'ddu.vim'
-[plugins.ftplugin]
-ddu-ff = '''
-nnoremap <buffer> <CR>
-\ <Cmd>call ddu#ui#ff#do_action('itemAction')<CR>
-nnoremap <buffer> <Space>
-\ <Cmd>call ddu#ui#ff#do_action('toggleSelectItem')<CR>
-nnoremap <buffer> i
-\ <Cmd>call ddu#ui#ff#do_action('openFilterWindow')<CR>
-nnoremap <buffer><silent> q
-\ <Cmd>call ddu#ui#ff#do_action('quit')<CR>
-'''
-ddu-ff-filter = '''
-inoremap <buffer> <CR>
-\ <Esc><Cmd>close<CR>
-nnoremap <buffer> <CR>
-\ <Cmd>close<CR>
-'''
-
-[[plugins]]
 repo = 'Shougo/ddu-source-file'
 on_source = 'ddu.vim'
 
@@ -97,6 +33,111 @@ on_source = 'ddu.vim'
 repo = 'Shougo/ddu-filter-matcher_hidden'
 on_source = 'ddu.vim'
 
+[[plugins]]
+repo = 'Shougo/ddu.vim'
+depends = ['denops.vim']
+hook_add = '''
+nnoremap <silent> ;f <Cmd>Ddu file file_rec -ui-param-startFilter=v:true<CR>
+nnoremap <silent> ;b <Cmd>Ddu buffer -ui-param-startFilter=v:false<CR>
+nnoremap <silent> ;g <Cmd>Ddu rg -ui-param-startFilter=v:true<CR>
+nnoremap <silent> ;n <Cmd>call ddu#start({
+    \   'name': 'grep',
+    \   'sources':[
+    \     {'name': 'rg', 'params': {'input': expand('<cword>')}}
+    \   ],
+    \ })<CR>
+
+command! DduRgLive call <SID>ddu_rg_live()
+function! s:ddu_rg_live() abort
+  call ddu#start({
+  \   'sources': [{
+  \     'name': 'rg',
+  \     'options': {
+  \       'matchers': [],
+  \       'volatile': v:true,
+  \     },
+  \   }],
+  \   'uiParams': {'ff': {
+  \     'ignoreEmpty': v:false,
+  \     'autoResize': v:false,
+  \   }},
+  \ })
+endfunction
+'''
+
+hook_source = '''
+call ddu#custom#patch_global({
+    \  'ui': 'ff',
+    \  'sources': [
+    \    {'name': 'file'},
+    \    {'name': 'file_rec'},
+    \    {'name': 'buffer'},
+    \    {'name': 'register'},
+    \    {'name': 'rg'},
+    \  ],
+    \  'sourceOptions': {
+    \    '_': {
+    \      'matchers': ['matcher_substring'],
+    \    },
+    \    'file_rec': { 'matchers': ['matcher_substring', 'matcher_hidden'] },
+    \    'rg': { 'matchers': [], 'volatile': v:true, },
+    \  },
+    \   'sourceParams' : {
+    \     'rg' : {
+    \       'args': ['--column', '--no-heading', '--color', 'never', '--json'],
+    \     },
+    \   },
+    \  'kindOptions': {
+    \    'file': {
+    \      'defaultAction': 'open',
+    \    },
+    \  },
+    \  'uiParams': {'ff': {
+    \    'ignoreEmpty': v:false,
+    \    'autoResize': v:false,
+    \    'prompt': '▶ ',
+    \  }},
+    \})
+
+call ddu#custom#patch_local('grep', {
+    \   'sourceParams' : {
+    \     'rg' : {
+    \       'args': ['--column', '--no-heading', '--color', 'never', '--json'],
+    \     },
+    \   },
+    \   'uiParams': {
+    \     'ff': {
+    \       'startFilter': v:false,
+    \       'prompt': '▶ ',
+    \     }
+    \   },
+    \ })
+'''
+
+[[plugins]]
+repo = 'Shougo/ddu-commands.vim'
+on_source ='ddu.vim'
+on_cmd = 'Ddu'
+
+[[plugins]]
+repo = 'Shougo/ddu-ui-ff'
+on_source = 'ddu.vim'
+hook_add = '''
+autocmd FileType ddu-ff call s:ddu_ff_my_settings()
+function! s:ddu_ff_my_settings() abort
+  nnoremap <buffer> <CR> <Cmd>call ddu#ui#do_action('itemAction')<CR>
+  nnoremap <buffer> <Space> <Cmd>call ddu#ui#do_action('toggleSelectItem')<CR>
+  nnoremap <buffer> i <Cmd>call ddu#ui#do_action('openFilterWindow')<CR>
+  nnoremap <buffer> q <Cmd>call ddu#ui#do_action('quit')<CR>
+endfunction
+
+autocmd FileType ddu-ff-filter call s:ddu_filter_my_settings()
+function! s:ddu_filter_my_settings() abort
+  inoremap <buffer> <CR> <Esc><Cmd>call ddu#ui#do_action('closeFilterWindow')<CR>
+  nnoremap <buffer> <CR> <Cmd>call ddu#ui#do_action('closeFilterWindow')<CR>
+endfunction
+'''
+
 # ============================================================================
 # Complement
 # ============================================================================
@@ -109,19 +150,19 @@ repo = 'Shougo/ddc-converter_remove_overlap'
 on_source = 'ddc.vim'
 
 [[plugins]]
-repo = 'Shougo/ddc-around'
+repo = 'Shougo/ddc-source-around'
 on_source = 'ddc.vim'
 
 [[plugins]]
-repo = 'Shougo/ddc-matcher_head'
+repo = 'Shougo/ddc-filter-matcher_head'
 on_source = 'ddc.vim'
 
 [[plugins]]
-repo = 'Shougo/ddc-sorter_rank'
+repo = 'Shougo/ddc-filter-sorter_rank'
 on_source = 'ddc.vim'
 
 [[plugins]]
-repo = 'LumaKernel/ddc-file'
+repo = 'LumaKernel/ddc-source-file'
 on_source = 'ddc.vim'
 
 [[plugins]]
@@ -136,10 +177,8 @@ on_ft = ['pug', 'jade']
 repo = 'rhysd/github-complete.vim'
 
 [[plugins]]
-repo = 'Shougo/pum.vim'
-hook_source = '''
-  call pum#set_option('max_width', 80)
-'''
+repo = 'Shougo/ddc-ui-native'
+on_source = 'ddc.vim'
 
 # -------------------
 # Language Server
@@ -184,40 +223,23 @@ call ddc#custom#patch_filetype(
     \   },
     \ }})
 
+call ddc#custom#patch_global('ui', 'native')
+
 set completeopt-=preview
 
 inoremap <silent><expr> <TAB>
-\ ddc#map#pum_visible() ? '<C-n>' :
+\ pumvisible() ? '<C-n>' :
 \ (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ?
 \ '<TAB>' : ddc#map#manual_complete()
 
-inoremap <expr><S-TAB>  ddc#map#pum_visible() ? '<C-p>' : '<C-h>'
+inoremap <expr><S-TAB>  pumvisible() ? '<C-p>' : '<C-h>'
 
 call ddc#enable()
 '''
 
 [[plugins]]
-repo = 'Shougo/ddc-nvim-lsp'
-on_source = 'nvim-lspconfig'
-
-[[plugins]]
-repo = 'neovim/nvim-lspconfig'
-on_event = 'BufEnter'
-on_ft = ['ruby', 'slim', 'html', 'css', 'scss', 'javascript']
-depends = 'ddc.vim'
-hook_source = '''
-lua << EOF
-local lsp_installer = require("nvim-lsp-installer")
-lsp_installer.on_server_ready(function(server)
-  local opts = {}
-  server:setup(opts)
-end)
-EOF
-'''
-
-[[plugins]]
-repo = 'williamboman/nvim-lsp-installer'
-on_source = 'nvim-lspconfig'
+repo = 'Shougo/ddc-source-nvim-lsp'
+on_source = 'ddc.vim'
 
 # ============================================================================
 # Syntax
@@ -261,6 +283,14 @@ on_ft = ['pug', 'vue']
 [[plugins]]
 repo = 'posva/vim-vue'
 on_ft = 'vue'
+hook_post_source = '''
+autocmd FileType vue syntax sync fromstart
+let g:vue_pre_processors = ['pug', 'scss', 'javascript', 'html']
+'''
+
+[[plugins]]
+repo = 'lepture/vim-jinja'
+on_ft = ['jinja', 'njk']
 
 [[plugins]]
 repo = 'cespare/vim-toml'
@@ -268,7 +298,7 @@ on_ft = [ 'toml' ]
 
 [[plugins]]
 repo = 'mattn/emmet-vim'
-on_ft = ['css', 'scss', 'html', 'vue']
+on_ft = ['css', 'scss', 'html', 'vue', 'liquid']
 hook_add = '''
 let g:user_emmet_settings = {
 \  'variables': {'lang': 'ja'},
