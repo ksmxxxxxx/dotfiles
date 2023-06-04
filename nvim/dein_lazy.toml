@@ -39,30 +39,8 @@ depends = ['denops.vim']
 hook_add = '''
 nnoremap <silent> ;f <Cmd>Ddu file file_rec -ui-param-startFilter=v:true<CR>
 nnoremap <silent> ;b <Cmd>Ddu buffer -ui-param-startFilter=v:false<CR>
-nnoremap <silent> ;g <Cmd>Ddu rg -ui-param-startFilter=v:true<CR>
-nnoremap <silent> ;n <Cmd>call ddu#start({
-    \   'name': 'grep',
-    \   'sources':[
-    \     {'name': 'rg', 'params': {'input': expand('<cword>')}}
-    \   ],
-    \ })<CR>
-
-command! DduRgLive call <SID>ddu_rg_live()
-function! s:ddu_rg_live() abort
-  call ddu#start({
-  \   'sources': [{
-  \     'name': 'rg',
-  \     'options': {
-  \       'matchers': [],
-  \       'volatile': v:true,
-  \     },
-  \   }],
-  \   'uiParams': {'ff': {
-  \     'ignoreEmpty': v:false,
-  \     'autoResize': v:false,
-  \   }},
-  \ })
-endfunction
+nnoremap <silent> ;g <Cmd>Ddu -name=grep rg -ui-param-ignoreEmpty -source-param-input=`input('Pattern: ')`<CR>
+nnoremap <silent> ;n <Cmd>Ddu -name=grep rg -source-param-input=`input('Selected: ', expand('<cword>'))`<CR>
 '''
 
 hook_source = '''
@@ -107,6 +85,8 @@ call ddu#custom#patch_local('grep', {
     \   },
     \   'uiParams': {
     \     'ff': {
+    \       'ignoreEmpty': v:false,
+    \       'autoResize': v:false,
     \       'startFilter': v:false,
     \       'prompt': '▶ ',
     \     }
