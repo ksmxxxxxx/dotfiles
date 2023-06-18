@@ -35,7 +35,6 @@ if dein#load_state('~/.cache/dein')
 
   call dein#load_toml(s:config_dir . '/dein.toml',      {'lazy': 0})
   call dein#load_toml(s:config_dir . '/dein_lazy.toml', {'lazy': 1})
-  "call dein#load_toml(s:config_dir . '/ddu.toml')
 
   call dein#end()
   call dein#save_state()

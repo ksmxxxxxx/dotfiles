@@ -39,8 +39,8 @@ depends = ['denops.vim']
 hook_add = '''
 nnoremap <silent> ;f <Cmd>Ddu file file_rec -ui-param-startFilter=v:true<CR>
 nnoremap <silent> ;b <Cmd>Ddu buffer -ui-param-startFilter=v:false<CR>
-nnoremap <silent> ;g <Cmd>Ddu -name=grep rg -ui-param-ignoreEmpty -source-param-input=`input('Pattern: ')`<CR>
-nnoremap <silent> ;n <Cmd>Ddu -name=grep rg -source-param-input=`input('Selected: ', expand('<cword>'))`<CR>
+nnoremap <silent> ;g <Cmd>Ddu -name=grep rg -ui-param-ignoreEmpty -source-param-input=`input('▶ ')`<CR>
+nnoremap <silent> ;n <Cmd>Ddu -name=grep rg -source-param-input=`input('▶ ', expand('<cword>'))`<CR>
 '''
 
 hook_source = '''
@@ -58,7 +58,7 @@ call ddu#custom#patch_global({
     \      'matchers': ['matcher_substring'],
     \    },
     \    'file_rec': { 'matchers': ['matcher_substring', 'matcher_hidden'] },
-    \    'rg': { 'matchers': [], 'volatile': v:true, },
+    \    'rg': { 'matchers': ['matcher_substring'] },
     \  },
     \   'sourceParams' : {
     \     'rg' : {
