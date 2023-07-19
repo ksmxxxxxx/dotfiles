@@ -88,5 +88,6 @@
         "scminput": true,
         "git-commit": true
     },
-    "terminal.integrated.fontSize": 14
+    "terminal.integrated.fontSize": 14,
+    "git.openRepositoryInParentFolders": "always"
 }
