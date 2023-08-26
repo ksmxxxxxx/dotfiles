@@ -58,8 +58,6 @@
       "description": "Insert note title from input box.",
       "format": "article"
     },
-    "terminal.integrated.fontSize": 14,
-    "git.openRepositoryInParentFolders": "always"
     {
       "type": "extension",
       "token": "{ext}",
@@ -83,6 +81,8 @@
     "scminput": true,
     "git-commit": true
   },
+  "terminal.integrated.fontSize": 14,
+  "git.openRepositoryInParentFolders": "always",
 //  "highlight.regexes": {
 //    "((?:<!-- *)?(?:#|// @|//|./\\*+|<!--|--|\\* @|{!|{{!--|{{!) *TODO(?:\\s*\\([^)]+\\))?:?)((?!\\w)(?: *-->| *\\*/| *!}| *--}}| *}}|(?= *(?:[^:]//|/\\*+|<!--|@|--|{!|{{!--|{{!))|(?: +[^\\n@]*?)(?= *(?:[^:]//|/\\*+|<!--|@|--(?!>)|{!|{{!--|{{!))|(?: +[^@\\n]+)?))": {
 //      "filterFileRegex": ".*(?<!CHANGELOG.md)$",
@@ -185,6 +185,6 @@
         "color": "#00b1d5"
       }
     ]
-},
-"files.eol": "\n"
+  },
+  "files.eol": "\n"
 }
