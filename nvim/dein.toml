@@ -25,6 +25,7 @@ hook_add = '''
 let g:ale_linters = {
 \   'ruby': ['rubocop'],
 \   'javascript': ['eslint'],
+\   'typescript': ['eslint', 'tsserver'],
 \   'vue': ['eslint'],
 \   'css': ['stylelint']
 \}
