@@ -9,8 +9,8 @@ hook_add = '''
 let g:ale_linters = {
 \   'ruby': ['rubocop'],
 \   'javascript': ['eslint'],
-\   'typescript': ['eslint', 'tsserver'],
-\   'vue': ['eslint'],
+\   'typescript': ['eslint', 'volar'],
+\   'vue': ['eslint', 'volar'],
 \   'css': ['stylelint']
 \}
 let g:ale_fixers = {
@@ -51,6 +51,7 @@ lua << EOF
     on_attach = on_attach,
     capabilities = capabilities,
   }
+  --[[
   require('lspconfig').tsserver.setup {
     on_attach,
     capabilities = capabilities,
@@ -59,6 +60,10 @@ lua << EOF
             disableSuggestions = true,
         },
     },
+  }
+  ]]
+  require('lspconfig').volar.setup {
+    filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' }
   }
 EOF
 '''
@@ -73,7 +78,7 @@ hook_add = '''
 lua << EOF
   require("mason").setup()
   require("mason-lspconfig").setup {
-    ensure_installed = { "cssls", "emmet_ls", "html", "solargraph", "tsserver", "volar" },
+    ensure_installed = { "cssls", "emmet_ls", "html", "solargraph", "volar" },
   }
 EOF
 '''

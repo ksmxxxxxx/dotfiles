@@ -15,8 +15,9 @@ let g:ale_linters = {
   'javascript' : ['eslint'],
 }
 let b:ale_fixers = {'javascript': ['prettier', 'eslint']}
-"let g:ale_statusline_format = 'E'
+let g:ale_virtualtext_cursor = 'current'
+let g:ale_virtualtext_cursor = 'disabled'
+let g:ale_statusline_format = 'E'
 let g:ale_echo_mgs_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter] %s [%severity%] [%...code...%]'
-
