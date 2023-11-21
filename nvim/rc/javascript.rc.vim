@@ -12,7 +12,8 @@ autocmd MyVimrc FileType javascript,javascript.jsx call EnableJavascript()
 
 " ale status
 let g:ale_linters = {
-  'javascript' : ['eslint'],
+  'javascript' : ['eslint', 'stylelint'],
+  'vue' : ['eslint', 'stylelint'],
 }
 let b:ale_fixers = {'javascript': ['prettier', 'eslint']}
 let g:ale_virtualtext_cursor = 'current'

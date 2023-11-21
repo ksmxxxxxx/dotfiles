@@ -10,7 +10,7 @@ let g:ale_linters = {
 \   'ruby': ['rubocop'],
 \   'javascript': ['eslint'],
 \   'typescript': ['eslint', 'volar'],
-\   'vue': ['eslint', 'volar'],
+\   'vue': ['eslint', 'volar', 'stylelint'],
 \   'css': ['stylelint']
 \}
 let g:ale_fixers = {
