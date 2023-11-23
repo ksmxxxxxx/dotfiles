@@ -1,0 +1,7 @@
+-- require("base")
+require("filetype")
+require("options")
+require("colorscheme")
+require("keymaps")
+require("autocmds")
+require("plugins")
