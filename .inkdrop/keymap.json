@@ -1,0 +1,14 @@
+{
+  "body": {
+    "ctrl-1": "inkdrop-note-templates:crowd-daily",
+    "ctrl-2": "inkdrop-note-templates:fjord-daily",
+    "ctrl-3": "inkdrop-note-templates:fjord-team-meeting-note",
+    "ctrl-4": "inkdrop-note-templates:blog-note-template",
+    "ctrl-[": "core:toggle-heading-bigger",
+    "ctrl-]": "core:toggle-heading-smaller",
+    "ctrl-p": "switch-notebook:toggle"
+  },
+  ".CodeMirror.vim-mode.insert-mode textarea": {
+    "ctrl-c": "vim:exit-insert-mode"
+  }
+}
