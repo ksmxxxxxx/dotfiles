@@ -2,6 +2,7 @@
 .inkdrop/config.cson
 nvim/denite.toml
 nvim/deoplete.toml
+.vim/
 **/_*.*
 nvim/pack/
 vscode/*.code-workspace
