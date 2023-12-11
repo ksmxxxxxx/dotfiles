@@ -34,13 +34,15 @@ keymap('n', 'bs', ':<C-u>sp', noremap) -- split view
 keymap('n', 'bv', ':<C-u>vs', noremap) -- split vartically view
 
 --- バッファ操作 ---
-keymap('n', 'bq', ':<C-u>bd', noremap) -- delete current buffer from buffers list
+keymap('n', 'bq', ':<C-u>bd<CR>', noremap) -- delete current buffer from buffers list
+keymap('n', 'bn', ':<C-u>bn<CR>', noremap) -- delete current buffer from buffers list
+keymap('n', 'bp', ':<C-u>bp<CR>', noremap) -- delete current buffer from buffers list
 
 --- 相対ファイルパスをクリップボードにリダイレクト ---
 keymap('n', ',xc', ':let @* = expand("%")<CR>', noremap)
 
 -- Insert mode --
 -- space + iでNormalモードに戻る
-keymap('i', '<leader>j', '<ESC>', silent)
--- keymap('i', 'jj', '<ESC>', silent)
--- keymap('i', 'kk', '<ESC>', silent)
+-- keymap('i', '<leader>j', '<ESC>', silent)
+keymap('i', 'jj', '<ESC>', silent)
+keymap('i', 'kk', '<ESC>', silent)
