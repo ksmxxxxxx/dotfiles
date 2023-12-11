@@ -12,43 +12,87 @@ end
 vim.opt.rtp:prepend(lazypath)
 -- print('lazy.lua')
 require("lazy").setup({
-  'nvim-tree/nvim-web-devicons', -- display dev icons
+  -- iceberg.vim
+  -- auto save
   {
-    'nvim-lualine/lualine.nvim', -- Status line
+    'Pocco81/auto-save.nvim',
+    config = function()
+      require("auto-save").setup({
+        enabled = true,
+        trigger_events = {"InsertLeave", "TextChanged"},
+      })
+    end
+  },
+  -- brackets completion
+  {
+    'm4xshen/autoclose.nvim',
+    config = function()
+      require("autoclose").setup({
+        options = {
+          pair_spaces = true
+        }
+      })
+    end
+  },
+  -- quick fix
+  'nvim-tree/nvim-web-devicons', -- display dev icons
+  -- Status line (lualine.nvim)
+  {
+    'nvim-lualine/lualine.nvim',
     dependencies = { 'nvim-web-devicons', opt = true },
     event = {'BufNewFile', 'BufRead'},
-    options = { theme = 'iceberg_dark' },
-    config = 'require("lualine").setup()'
+    config = function()
+      require("lualine").setup({
+        theme = 'iceberg_dark',
+        tabline = {
+          lualine_a = {'filename'},
+          lualine_z = {'tabs'}
+        }
+      })
+    end
+  },
+  -- coc.nvim
+  {
+    'junegunn/fzf',
+    build = {'fzf#install()'}
   },
   {
     'neoclide/coc.nvim', -- coc.nvim Like the vscode
     branch = 'release',
-    event = "InsertEnter",
+    event = "BufEnter",
     keys = {
       -- 定義に移動
-      { '<C-]>', '<Plug>(coc-definition)' },
+      { ';d', '<Plug>(coc-definition)' },
       -- 呼び出し元に移動
-      { '<C-j>h', '<Plug>(coc-references)' },
+      { ';r', '<Plug>(coc-references)' },
       -- 実装に移動
-      { '<C-j>i', '<Plug>(coc-implementation)' },
-      -- 配下の定義を表示
-      { '<M-s>', ':call CocActionAsync(\'doHover\')<CR>' },
-      { '<C-P>', '<C-\\><C-O>:call CocActionAsync(\'showSignatureHelp\')<CR>', mode = "i" },
-      -- 前後のエラーや警告に移動
-      { '<M-k>', '<Plug>(coc-diagnostic-prev)' },
-      { '<M-j>', '<Plug>(coc-diagnostic-next)' },
-      -- Enterキーで決定
-      { "<cr>", [[coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"]], mode = "i", expr = true, replace_keycodes = false },
-      -- code action
-      { '<M-CR>', '<Plug>(coc-codeaction-cursor)' },
-      -- Find symbol of current document
-      { '<C-j>o', ':<C-u>CocList outline<cr>' },
-      -- Search workspace symbols
-      { '<C-j>s', ':<C-u>CocList -I symbols<cr>' },
+      { ';i', '<Plug>(coc-implementation)' },
       -- Rename
-      { '<S-M-r>', '<Plug>(coc-rename)' },
+      { '<leader>rn', '<Plug>(coc-rename)' },
+      -- Enterキーで決定
+      { '<CR>', [[coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"]], mode = "i", expr = true, replace_keycodes = false },
+
+      -- coc-fzf-preview
+      ---- project files grep
+      {';f', ':<C-u>CocCommand fzf-preview.ProjectFiles<CR>'},
+      ---- buffers grep
+      {';b', ':<C-u>CocCommand fzf-preview.Buffers<CR>'},
+      ---- quickfix
+      {';qf', ':<C-u>CocCommand fzf-preview.QuickFix<CR>'},
+      -- 配下の定義を表示
+      -- { '<M-s>', ':call CocActionAsync(\'doHover\')<CR>' },
+      -- { '<C-P>', '<C-\\><C-O>:call CocActionAsync(\'showSignatureHelp\')<CR>', mode = "i" },
+      -- 前後のエラーや警告に移動
+      -- { '<M-k>', '<Plug>(coc-diagnostic-prev)' },
+      -- { '<M-j>', '<Plug>(coc-diagnostic-next)' },
+      -- code action
+      -- { '<M-CR>', '<Plug>(coc-codeaction-cursor)' },
+      -- Find symbol of current document
+      -- { '<C-j>o', ':<C-u>CocList outline<cr>' },
+      -- Search workspace symbols
+      -- { '<C-j>s', ':<C-u>CocList -I symbols<cr>' },
       -- Auto complete
-      { "<F5>", "coc#refresh()" },
+      -- { "<F5>", "coc#refresh()" },
     },
     config = function()
       vim.g.coc_global_extensions = {
@@ -61,10 +105,57 @@ require("lazy").setup({
         "coc-stylelint",
         "coc-eslint",
         "coc-prettier",
-        "@yaegassy/coc-volar"
+        "@yaegassy/coc-volar",
         -- VueのプロジェクトではTakeOverModeをtrueにする
         --- https://github.com/yaegassy/coc-volar#if-you-are-using-takeover-mode-for-the-first-time-in-your-project
+        "coc-dot-complete",
+        "coc-dash-complete",
+        -- fuzzy finder
+        "coc-fzf-preview"
       }
     end
   },
+  -- nvim-treesitter
+  {
+    'nvim-treesitter/nvim-treesitter',
+    build = {':TSUpdate'},
+    event = {'BufNewFile', 'BufRead'},
+    config = function()
+      require("nvim-treesitter.configs").setup({
+        auto_install = true,
+        highlight = {
+          enable = true,
+          disable = {},
+        },
+        indent = {
+          enable = true,
+          disable = {},
+        },
+        ensure_installed = {
+          "markdown",
+          "markdown_inline",
+          "toml",
+          "json",
+          "yaml",
+          "ruby",
+          "javascript",
+          "typescript",
+          "tsx",
+          "pug",
+          "vue",
+          "scss",
+          "css",
+          "html",
+          "lua",
+          "sql",
+        },
+        autotag = {
+          enable = true,
+        },
+      })
+    end
+  },
+  -- treesitter extarnal module & plugin
+  'windwp/nvim-ts-autotag',
+  -- telescope.nvim
 })

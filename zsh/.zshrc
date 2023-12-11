@@ -46,3 +46,5 @@ alias tns='tm new -s'
 alias tat='tm a -t'
 alias tls='tm ls'
 alias tkil='tm kill-session'
+
+export RUNEWIDTH_EASTASIAN=0
