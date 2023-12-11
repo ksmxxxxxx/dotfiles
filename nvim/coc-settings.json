@@ -1,0 +1,5 @@
+{
+  "stylelintplus.autoFixOnFormat": true,
+  "stylelintplus.autoFixOnSave": true,
+  "stylelintplus.validateOnSave": true,
+}
