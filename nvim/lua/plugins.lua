@@ -13,6 +13,7 @@ vim.opt.rtp:prepend(lazypath)
 -- print('lazy.lua')
 require("lazy").setup({
   -- iceberg.vim
+
   -- auto save
   {
     'Pocco81/auto-save.nvim',
@@ -34,8 +35,10 @@ require("lazy").setup({
       })
     end
   },
+
   -- quick fix
   'nvim-tree/nvim-web-devicons', -- display dev icons
+
   -- Status line (lualine.nvim)
   {
     'nvim-lualine/lualine.nvim',
@@ -51,11 +54,9 @@ require("lazy").setup({
       })
     end
   },
+
   -- coc.nvim
-  {
-    'junegunn/fzf',
-    build = {'fzf#install()'}
-  },
+  { 'junegunn/fzf', build = {'fzf#install()'} },
   {
     'neoclide/coc.nvim', -- coc.nvim Like the vscode
     branch = 'release',
