@@ -40,12 +40,12 @@ require("lazy").setup({
   {
     'nvim-lualine/lualine.nvim',
     dependencies = { 'nvim-web-devicons', opt = true },
-    event = {'BufNewFile', 'BufRead'},
+    event = {'BufEnter'},
     config = function()
       require("lualine").setup({
         theme = 'iceberg_dark',
         tabline = {
-          lualine_a = {'filename'},
+          lualine_a = {'buffers'},
           lualine_z = {'tabs'}
         }
       })
