@@ -102,10 +102,7 @@ require("lazy").setup({
         "coc-html",
         "coc-css",
         "coc-yaml",
-        -- "coc-stylelint",
-        "coc-stylelintplus",
         "coc-eslint",
-        "coc-prettier",
         "@yaegassy/coc-volar",
         -- VueのプロジェクトではTakeOverModeをtrueにする
         --- https://github.com/yaegassy/coc-volar#if-you-are-using-takeover-mode-for-the-first-time-in-your-project
