@@ -3,6 +3,7 @@
 .inkdrop/config.cson
 nvim/denite.toml
 nvim/deoplete.toml
+nvim/pack/
 vscode/*.code-workspace
 zsh/.zprezto
 zsh/.zsh_history
