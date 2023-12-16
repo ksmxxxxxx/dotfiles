@@ -24,6 +24,7 @@ require("lazy").setup({
       })
     end
   },
+
   -- brackets completion
   {
     'm4xshen/autoclose.nvim',
@@ -54,6 +55,35 @@ require("lazy").setup({
       })
     end
   },
+  
+  -- -- formatter
+  -- {
+  --   'stevearc/conform.nvim',
+  --   event = { "BufWritePre" },
+  --   cmd = { "ConformInfo" },
+  --   keys = {
+  --     {
+  --       -- Customize or remove this keymap to your liking
+  --       ",p",
+  --       function()
+  --         require("conform").format({ async = true, lsp_fallback = true })
+  --       end,
+  --       mode = "n",
+  --       desc = "Format buffer",
+  --     },
+  --   },
+  --   opts = {
+  --     formatters_by_ft = {
+  --       ruby = { "rubocop" },
+  --       vue = { "stylelint", "eslint", "prettier" },
+  --       javascript = { "eslint", "prettier" },
+  --       typescrip = { "eslint", "prettier" },
+  --       css = { "stylelint" },
+  --       scss = { "stylelint" },
+  --     },
+  --     format_on_save = { timeout_ms = 500, lsp_fallback = true },
+  --   },
+  -- },
 
   -- coc.nvim
   { 'junegunn/fzf', build = {'fzf#install()'} },
