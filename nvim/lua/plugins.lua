@@ -37,8 +37,22 @@ require("lazy").setup({
     end
   },
 
-  -- quick fix
-  'nvim-tree/nvim-web-devicons', -- display dev icons
+  -- display dev icons
+  'nvim-tree/nvim-web-devicons',
+
+  -- indent guide
+  { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
+
+  -- commentary
+  {
+    'numToStr/Comment.nvim',
+    opts = {
+        -- add any options here
+    },
+    lazy = false,
+    -- default keymapping guide is here
+    -- https://github.com/numToStr/Comment.nvim#configuration-optional
+},
 
   -- Status line (lualine.nvim)
   {
@@ -148,6 +162,7 @@ require("lazy").setup({
       }
     end
   },
+
   -- nvim-treesitter
   {
     'nvim-treesitter/nvim-treesitter',
