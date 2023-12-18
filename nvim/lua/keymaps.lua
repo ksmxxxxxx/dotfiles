@@ -38,6 +38,9 @@ keymap('n', 'bq', ':<C-u>bd<CR>', noremap) -- delete current buffer from buffers
 keymap('n', 'bn', ':<C-u>bn<CR>', noremap) -- delete current buffer from buffers list
 keymap('n', 'bp', ':<C-u>bp<CR>', noremap) -- delete current buffer from buffers list
 
+-- 検索ハイライトをキャンセル --
+keymap('n', '<ESC><ESC>', ':<C-u>nohlsearch<CR>', noremap)
+
 --- 相対ファイルパスをクリップボードにリダイレクト ---
 keymap('n', ',xc', ':let @* = expand("%")<CR>', noremap)
 
