@@ -1,3 +1,8 @@
+-- Todo
+-- coc.nvimをnvim-compにしたい
+-- fuzzu finderのfzfかtelescopleにしたい
+-- filerはいらない。fuzzy finderでファイル名で検索して開きたい
+-- Pluginの設定はそれぞれ別ファイルにしてrequireする形にして整理したい
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
@@ -13,6 +18,7 @@ vim.opt.rtp:prepend(lazypath)
 -- print('lazy.lua')
 require("lazy").setup({
   -- iceberg.vim
+  -- 今はnvim buildin のpackでインストールしてるけど、Lazyで読み込ませたい
 
   -- auto save
   {
