@@ -1,4 +1,0 @@
-[[plugins]]
-repo = 'cohama/lexima.vim'
-on_i = 1
-
