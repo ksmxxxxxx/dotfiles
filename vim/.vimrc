@@ -14,7 +14,9 @@ autocmd colorscheme * highlight NonText     ctermbg=NONE guibg=NONE
 autocmd colorscheme * highlight Folded      ctermbg=NONE guibg=NONE
 autocmd colorscheme * highlight EndOfBuffer ctermbg=NONE guibg=NONE
 
+set t_Co=256
 colorscheme iceberg
+set bg=dark
 
 syntax enable
 

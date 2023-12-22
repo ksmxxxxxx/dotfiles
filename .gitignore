@@ -1,8 +1,10 @@
 .DS_Store
-.vim/
 .inkdrop/config.cson
 nvim/denite.toml
 nvim/deoplete.toml
+nvim/lazy-lock.json
+.vim/
+**/_*.*
 nvim/pack/
 vscode/*.code-workspace
 zsh/.zprezto

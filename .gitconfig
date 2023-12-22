@@ -2,7 +2,7 @@
   name = ksmxxxxxx
   email = kankichi69@gmail.com
 [core]
-  editor = nvim
+  editor = vim
 [color]
   diff = auto
   status = auto
