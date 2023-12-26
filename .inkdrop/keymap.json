@@ -3,7 +3,9 @@
     "ctrl-1": "inkdrop-note-templates:crowd-daily",
     "ctrl-2": "inkdrop-note-templates:fjord-daily",
     "ctrl-3": "inkdrop-note-templates:fjord-team-meeting-note",
-    "ctrl-4": "inkdrop-note-templates:blog-note-template"
+    "ctrl-4": "inkdrop-note-templates:blog-note-template",
+    "ctrl-[": "core:toggle-heading-smaller",
+    "ctrl-]": "core:toggle-heading-bigger"
   },
   ".CodeMirror.vim-mode.insert-mode textarea": {
     "j j": "vim:exit-insert-mode"
