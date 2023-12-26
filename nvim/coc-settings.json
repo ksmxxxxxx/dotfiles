@@ -1,3 +1,12 @@
 {
   "eslint.autoFixOnSave": true,
+  "html.filetypes": [
+    "html",
+    "handlebars",
+    "htmldjango",
+    "blade",
+    "vue",
+    "liquid",
+    "njk"
+  ]
 }
