@@ -122,8 +122,8 @@ require("lazy").setup({
       { '<leader>rn', '<Plug>(coc-rename)' },
 
       -- 補完候補をTabで選択
-      { mode = "i", "<TAB>", [[coc#pum#visible() ? coc#pum#next(1) : v:lua.check_back_space() ? "<TAB>" : coc#refresh()]], expr = true, replace_keycodes = false },
-      { mode = "i", "S-TAB", [[coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"]], expr = true, replace_keycodes = false },
+      { mode = "i", "<TAB>", [[coc#pum#visible() ? coc#pum#next(1) : "<TAB>"]], expr = true, replace_keycodes = false },
+      { mode = "i", "<S-TAB>", [[coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"]], expr = true, replace_keycodes = false },
       -- Enterキーで決定
       { '<CR>', [[coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"]], mode = "i", expr = true, replace_keycodes = false },
 
