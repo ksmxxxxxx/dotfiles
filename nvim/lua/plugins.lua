@@ -132,6 +132,8 @@ require("lazy").setup({
       {';f', ':<C-u>CocCommand fzf-preview.ProjectFiles<CR>'},
       ---- buffers grep
       {';b', ':<C-u>CocCommand fzf-preview.Buffers<CR>'},
+      ---- Project grep
+      {';g', ':<C-u>CocCommand fzf-preview.ProjectGrep<Space>'},
       ---- quickfix
       {';qf', ':<C-u>CocCommand fzf-preview.QuickFix<CR>'},
       -- 配下の定義を表示
