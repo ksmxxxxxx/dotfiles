@@ -30,8 +30,8 @@ keymap('n', 'pt', 'gT', noremap) -- move to previous tab
 keymap('n', 'nnt', ':<C-u>tabnew<CR>', noremap) -- new tab view
 
 --- 画面操作 ---
-keymap('n', 'bs', ':<C-u>sp', noremap) -- split view
-keymap('n', 'bv', ':<C-u>vs', noremap) -- split vartically view
+keymap('n', 'bs', ':<C-u>sp<CR>', noremap) -- split view
+keymap('n', 'bv', ':<C-u>vs<CR>', noremap) -- split vartically view
 
 --- バッファ操作 ---
 keymap('n', 'bq', ':<C-u>bd<CR>', noremap) -- delete current buffer from buffers list
