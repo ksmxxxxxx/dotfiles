@@ -21,15 +21,15 @@ require("lazy").setup({
   -- 今はnvim buildin のpackでインストールしてるけど、Lazyで読み込ませたい
 
   -- auto save
-  {
-    'Pocco81/auto-save.nvim',
-    config = function()
-      require("auto-save").setup({
-        enabled = true,
-        trigger_events = {"InsertLeave", "TextChanged"},
-      })
-    end
-  },
+  -- {
+  --   'Pocco81/auto-save.nvim',
+  --   config = function()
+  --     require("auto-save").setup({
+  --       enabled = true,
+  --       trigger_events = {"InsertLeave", "TextChanged"},
+  --     })
+  --   end
+  -- },
 
   -- brackets completion
   {

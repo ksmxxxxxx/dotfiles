@@ -4,6 +4,8 @@ local silent = { silent = true }
 local keymap = vim.api.nvim_set_keymap
 
 -- Normal mode --
+-- 保存
+keymap('n', '<leader>w', ':<C-u>w<CR>', noremap)
 --- curcorのwindow移動 ---
 keymap('n', 'bh', '<C-w>h', noremap)
 keymap('n', 'bj', '<C-w>j', noremap)
