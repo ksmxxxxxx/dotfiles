@@ -120,6 +120,8 @@ require("lazy").setup({
       { ';i', '<Plug>(coc-implementation)' },
       -- Rename
       { '<leader>rn', '<Plug>(coc-rename)' },
+      -- format
+      { ';fm', '<Plug>(coc-format)' },
 
       -- 補完候補をTabで選択
       { mode = "i", "<TAB>", [[coc#pum#visible() ? coc#pum#next(1) : "<TAB>"]], expr = true, replace_keycodes = false },
@@ -160,11 +162,11 @@ require("lazy").setup({
         "coc-css",
         "coc-yaml",
         "coc-eslint",
-        "@yaegassy/coc-volar",
+        "coc-prettier",
+        "coc-stylelintplus",
         -- VueのプロジェクトではTakeOverModeをtrueにする
         --- https://github.com/yaegassy/coc-volar#if-you-are-using-takeover-mode-for-the-first-time-in-your-project
-        "coc-dot-complete",
-        "coc-dash-complete",
+        "@yaegassy/coc-volar",
         -- fuzzy finder
         "coc-fzf-preview"
       }
@@ -192,6 +194,7 @@ require("lazy").setup({
           "markdown_inline",
           "toml",
           "json",
+          "jsonc",
           "yaml",
           "ruby",
           "javascript",

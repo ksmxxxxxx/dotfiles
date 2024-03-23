@@ -1,4 +1,10 @@
 {
+  "css.validate": true,
+  "scss.validate": true,
+  "prettier.enable": true,
+  "stylelintplus.autoFixOnFormat": true,
+  "stylelintplus.autoFixOnSave": true,
+  "stylelintplus.validateOnSave": true,
   "eslint.autoFixOnSave": true,
   "html.filetypes": [
     "html",
@@ -7,6 +13,6 @@
     "blade",
     "vue",
     "liquid",
-    "njk"
+    "nunjacks"
   ]
 }
