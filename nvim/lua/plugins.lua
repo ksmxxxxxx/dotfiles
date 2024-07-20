@@ -121,7 +121,7 @@ require("lazy").setup({
       -- Rename
       { '<leader>rn', '<Plug>(coc-rename)' },
       -- format
-      { ';fm', '<Plug>(coc-format)' },
+      { '<leader>f', '<Plug>(coc-format)' },
 
       -- 補完候補をTabで選択
       { mode = "i", "<TAB>", [[coc#pum#visible() ? coc#pum#next(1) : "<TAB>"]], expr = true, replace_keycodes = false },

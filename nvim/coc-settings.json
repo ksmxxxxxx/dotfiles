@@ -2,6 +2,7 @@
   "css.validate": true,
   "scss.validate": true,
   "prettier.enable": true,
+  "coc.preferences.formatOnSave": true,
   "stylelintplus.autoFixOnFormat": true,
   "stylelintplus.autoFixOnSave": true,
   "stylelintplus.validateOnSave": true,
