@@ -6,7 +6,7 @@
   "stylelintplus.autoFixOnFormat": true,
   "stylelintplus.autoFixOnSave": true,
   "stylelintplus.validateOnSave": true,
-  "eslint.autoFixOnSave": true,
+  "eslint.autoFixOnSave": false,
   "html.filetypes": [
     "html",
     "handlebars",
