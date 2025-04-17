@@ -158,6 +158,7 @@ require("lazy").setup({
         "coc-json",
         "coc-solargraph",
         "coc-tsserver",
+        "coc-emmet",
         "coc-html",
         "coc-css",
         "coc-yaml",

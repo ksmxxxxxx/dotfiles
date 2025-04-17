@@ -7,6 +7,10 @@
   "stylelintplus.autoFixOnSave": true,
   "stylelintplus.validateOnSave": true,
   "eslint.autoFixOnSave": false,
+  "emmet.showExpandedAbbreviation": "always",
+  "emmet.includeLanguages": {
+    "liquid": "html"
+  },
   "html.filetypes": [
     "html",
     "handlebars",
