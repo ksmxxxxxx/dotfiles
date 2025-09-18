@@ -4,5 +4,5 @@ vim.cmd [[
   autocmd colorscheme * highlight Folded      ctermbg=NONE guibg=NONE
   autocmd colorscheme * highlight EndOfBuffer ctermbg=NONE guibg=NONE
   syntax enable
-  colorscheme iceberg
+  colorscheme horizon
 ]]

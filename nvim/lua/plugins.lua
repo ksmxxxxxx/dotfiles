@@ -17,7 +17,15 @@ end
 vim.opt.rtp:prepend(lazypath)
 -- print('lazy.lua')
 require("lazy").setup({
-  -- iceberg.vim
+  -- theme horizon
+  {
+    'lunarvim/horizon.nvim',
+    lazy = false,
+    priority = 1000,
+    config = function()
+      vim.cmd([[colorscheme horizon]])
+    end
+  },
   -- 今はnvim buildin のpackでインストールしてるけど、Lazyで読み込ませたい
 
   -- auto save
@@ -67,7 +75,7 @@ require("lazy").setup({
     event = {'BufEnter'},
     config = function()
       require("lualine").setup({
-        theme = 'iceberg_dark',
+        theme = 'horizon',
         tabline = {
           lualine_a = {'buffers'},
           lualine_z = {'tabs'}
