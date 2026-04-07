@@ -1,40 +1,64 @@
 return {
   {
-    'neoclide/coc.nvim',
-    branch = 'release',
-    event = "BufEnter",
-    keys = {
-      -- 定義に移動
-      { ';d', '<Plug>(coc-definition)' },
-      -- 呼び出し元に移動
-      { ';r', '<Plug>(coc-references)' },
-      -- 実装に移動
-      { ';i', '<Plug>(coc-implementation)' },
-      -- Rename
-      { '<leader>rn', '<Plug>(coc-rename)' },
-      -- format
-      { '<leader>f', '<Plug>(coc-format)' },
+    'williamboman/mason.nvim',
+    config = function()
+      require('mason').setup()
+    end
+  },
 
-      -- 補完候補をTabで選択
-      { mode = "i", "<TAB>", [[coc#pum#visible() ? coc#pum#next(1) : "<TAB>"]], expr = true, replace_keycodes = false },
-      { mode = "i", "<S-TAB>", [[coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"]], expr = true, replace_keycodes = false },
-      -- Enterキーで決定
-      { '<CR>', [[coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"]], mode = "i", expr = true, replace_keycodes = false },
+  {
+    'williamboman/mason-lspconfig.nvim',
+    dependencies = { 'williamboman/mason.nvim' },
+    config = function()
+      require('mason-lspconfig').setup({
+        ensure_installed = {
+          'ruby_lsp',
+          'ts_ls',
+          'vue_ls',
+          'html',
+          'cssls',
+          'jsonls',
+          'yamlls',
+          'eslint',
+        },
+        automatic_installation = true,
+      })
+    end
+  },
 
+  {
+    'neovim/nvim-lspconfig',
+    dependencies = {
+      'williamboman/mason-lspconfig.nvim',
+      'hrsh7th/cmp-nvim-lsp',
     },
     config = function()
-      vim.g.coc_global_extensions = {
-        "coc-json",
-        "coc-solargraph",
-        "coc-tsserver",
-        "coc-html",
-        "coc-css",
-        "coc-yaml",
-        "coc-eslint",
-        "coc-prettier",
-        "coc-stylelintplus",
-        "@yaegassy/coc-volar",
+      local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+      -- キーマップは LSP がバッファにアタッチされたタイミングで設定
+      vim.api.nvim_create_autocmd('LspAttach', {
+        callback = function(args)
+          local opts = { noremap = true, silent = true, buffer = args.buf }
+          vim.keymap.set('n', ';d', vim.lsp.buf.definition, opts)
+          vim.keymap.set('n', ';r', '<cmd>Telescope lsp_references<CR>', opts)
+          vim.keymap.set('n', ';i', vim.lsp.buf.implementation, opts)
+          vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
+          vim.keymap.set('n', '<leader>f', function()
+            vim.lsp.buf.format({ async = true })
+          end, opts)
+        end
+      })
+
+      local servers = {
+        'ruby_lsp', 'ts_ls', 'vue_ls',
+        'html', 'cssls', 'jsonls', 'yamlls', 'eslint',
       }
+
+      for _, server in ipairs(servers) do
+        vim.lsp.config(server, { capabilities = capabilities })
+      end
+
+      vim.lsp.enable(servers)
     end
   },
 }

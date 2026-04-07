@@ -48,3 +48,4 @@ alias tls='tm ls'
 alias tkil='tm kill-session'
 
 export RUNEWIDTH_EASTASIAN=0
+export PATH="$HOME/.local/bin:$PATH"
