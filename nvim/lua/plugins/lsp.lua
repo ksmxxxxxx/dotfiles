@@ -1,6 +1,4 @@
 return {
-  { 'junegunn/fzf', build = { 'fzf#install()' } },
-
   {
     'neoclide/coc.nvim',
     branch = 'release',
@@ -23,11 +21,6 @@ return {
       -- Enterキーで決定
       { '<CR>', [[coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"]], mode = "i", expr = true, replace_keycodes = false },
 
-      -- coc-fzf-preview
-      { ';f', ':<C-u>CocCommand fzf-preview.ProjectFiles<CR>' },
-      { ';b', ':<C-u>CocCommand fzf-preview.Buffers<CR>' },
-      { ';g', ':<C-u>CocCommand fzf-preview.ProjectGrep<Space>' },
-      { ';qf', ':<C-u>CocCommand fzf-preview.QuickFix<CR>' },
     },
     config = function()
       vim.g.coc_global_extensions = {
@@ -41,7 +34,6 @@ return {
         "coc-prettier",
         "coc-stylelintplus",
         "@yaegassy/coc-volar",
-        "coc-fzf-preview",
       }
     end
   },

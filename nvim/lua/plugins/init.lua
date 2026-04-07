@@ -15,5 +15,6 @@ require("lazy").setup({
   { import = "plugins.ui" },
   { import = "plugins.editing" },
   { import = "plugins.treesitter" },
+  { import = "plugins.telescope" },
   { import = "plugins.lsp" },
 })
