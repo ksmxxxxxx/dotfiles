@@ -17,7 +17,7 @@ echo "===== dotfiles セットアップ開始 ====="
 # `command -v brew` でbrewコマンドが存在するか確認する
 # `&>/dev/null` は標準出力・エラー出力を両方捨てる（画面に出力しない）という意味
 if ! command -v brew &>/dev/null; then
-  echo "[1/5] Homebrew をインストール中..."
+  echo "[1/6] Homebrew をインストール中..."
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
   # Apple Silicon (M1/M2/M3) の場合、Homebrewのパスが /opt/homebrew になる
@@ -28,7 +28,7 @@ if ! command -v brew &>/dev/null; then
     eval "$(/usr/local/bin/brew shellenv)"
   fi
 else
-  echo "[1/5] Homebrew はインストール済みです。スキップします。"
+  echo "[1/6] Homebrew はインストール済みです。スキップします。"
 fi
 
 # ─────────────────────────────────────────────
@@ -36,13 +36,13 @@ fi
 # ─────────────────────────────────────────────
 # `-d` でディレクトリが存在するか確認できる
 if [ ! -d "$DOTFILES_DIR" ]; then
-  echo "[2/5] dotfiles をクローン中..."
+  echo "[2/6] dotfiles をクローン中..."
   # `mkdir -p` は中間のディレクトリ（workspaces）も含めて一括作成する
   # `-p` なしだと親ディレクトリが存在しない場合にエラーになる
   mkdir -p "$HOME/workspaces"
   git clone "$DOTFILES_REPO" "$DOTFILES_DIR"
 else
-  echo "[2/5] dotfiles はすでに存在します。最新の状態に更新中..."
+  echo "[2/6] dotfiles はすでに存在します。最新の状態に更新中..."
   # `-C` オプションでcdせずに特定ディレクトリのgit操作ができる
   git -C "$DOTFILES_DIR" pull
 fi
@@ -52,7 +52,7 @@ fi
 # ─────────────────────────────────────────────
 # `brew bundle` はBrewfileに書かれたツール・アプリを一括インストールするコマンド
 # `--file` でBrewfileの場所を指定している
-echo "[3/5] Homebrew パッケージをインストール中（時間がかかります）..."
+echo "[3/6] Homebrew パッケージをインストール中（時間がかかります）..."
 brew bundle --file="$DOTFILES_DIR/Brewfile"
 
 # ─────────────────────────────────────────────
@@ -61,7 +61,7 @@ brew bundle --file="$DOTFILES_DIR/Brewfile"
 # シンボリックリンク = ファイルの「ショートカット」
 # dotfilesリポジトリのファイルをホームディレクトリから参照できるようにする
 # こうすることで、設定ファイルをgitで一元管理できる
-echo "[4/5] シンボリックリンクを作成中..."
+echo "[4/6] シンボリックリンクを作成中..."
 
 # リンク作成の処理を関数にまとめている
 # 同じ処理を何度も書かずに済む（DRY原則）
@@ -96,12 +96,42 @@ mkdir -p "$HOME/.config"
 link "$DOTFILES_DIR/nvim" "$HOME/.config/nvim"
 
 # ─────────────────────────────────────────────
-# 5. NeoVim プラグインのインストール
+# 5. Claude Code（秘書くん）の設定を復元
+# ─────────────────────────────────────────────
+# 設定ファイルの実体は Obsidian vault（~/Documents/ksmxxxxxx/claude-config/）に置いてある
+# Obsidian Sync で新PCに届いたファイルをシンボリックリンクで参照する構成になっている
+# こうすることで、設定の変更が自動的に Sync で他のPCにも反映される
+#
+# 【前提】このステップを実行する前に Obsidian Sync が完了していること
+# 同期が終わっていないと vault のファイルが存在せず、リンクが壊れた状態になる
+CLAUDE_CONFIG_DIR="$HOME/Documents/ksmxxxxxx/claude-config"
+
+echo "[5/6] Claude Code の設定を復元中..."
+
+if [ ! -d "$CLAUDE_CONFIG_DIR" ]; then
+  echo "  スキップ: $CLAUDE_CONFIG_DIR が見つかりません。Obsidian Sync が完了しているか確認してください。"
+else
+  # ~/.claude/ ディレクトリが存在しない場合は作成する
+  # Claude Code を一度も起動していない新PCでは存在しないことがある
+  mkdir -p "$HOME/.claude"
+
+  # memory のリンク先ディレクトリを事前に作成しておく
+  # Claude Code が自動生成するパスなので、初回起動前は存在しない
+  mkdir -p "$HOME/.claude/projects/-Users-kasumi-suzuki-workspaces"
+
+  link "$CLAUDE_CONFIG_DIR/settings.json" "$HOME/.claude/settings.json"
+  link "$CLAUDE_CONFIG_DIR/claude.json"   "$HOME/.claude.json"
+  link "$CLAUDE_CONFIG_DIR/CLAUDE.md"     "$HOME/CLAUDE.md"
+  link "$CLAUDE_CONFIG_DIR/memory"        "$HOME/.claude/projects/-Users-kasumi-suzuki-workspaces/memory"
+fi
+
+# ─────────────────────────────────────────────
+# 6. NeoVim プラグインのインストール
 # ─────────────────────────────────────────────
 # `--headless` = GUIを起動せずにNeoVimを実行するオプション
 # `"+Lazy! sync"` = lazy.nvimのsyncコマンドを起動時に実行する
 # `+qa` = 処理が終わったらNeoVimを終了する
-echo "[5/5] NeoVim プラグインをインストール中..."
+echo "[6/6] NeoVim プラグインをインストール中..."
 nvim --headless "+Lazy! sync" +qa 2>&1
 
 echo ""
@@ -119,3 +149,6 @@ echo "     nodenv install 22.14.0"
 echo ""
 echo "  4. Claude Code の認証："
 echo "     claude"
+echo ""
+echo "  5. Figma API キーを Keychain に登録（Claude Code の Figma MCP に必要）："
+echo "     security add-generic-password -a \"\$USER\" -s FIGMA_API_TOKEN -w"
