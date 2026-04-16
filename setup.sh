@@ -82,6 +82,9 @@ link() {
   echo "  作成: $dst -> $src"
 }
 
+mkdir -p "$HOME/Library/Preferences"
+link "$DOTFILES_DIR/iterm2/com.googlecode.iterm2.plist" "$HOME/Library/Preferences/com.googlecode.iterm2.plist"
+
 link "$DOTFILES_DIR/.zshrc"               "$HOME/.zshrc"
 link "$DOTFILES_DIR/.zshenv"              "$HOME/.zshenv"
 link "$DOTFILES_DIR/.tmux.conf"           "$HOME/.tmux.conf"
