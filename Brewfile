@@ -70,7 +70,6 @@ brew "sanemat/font/ricty"
 cask "adobe-creative-cloud"
 cask "claude"
 cask "claude-code"
-cask "appcleaner"
 cask "caldigit-docking-utility"
 cask "clip-studio-paint"
 cask "clipy"
@@ -86,7 +85,6 @@ cask "iterm2"
 cask "karabiner-elements"
 cask "obs"
 cask "obsidian"
-cask "pushplaylabs-sidekick"
 cask "rectangle"
 cask "rightfont"
 cask "sequel-ace"
@@ -94,13 +92,11 @@ cask "slack"
 cask "via"
 cask "visual-studio-code"
 cask "zoom"
-mas "Bear", id: 1091189122
 mas "Contrast", id: 1254981365
 mas "GarageBand", id: 682658836
 mas "GoodNotes", id: 1444383602
 mas "iMovie", id: 408981434
 mas "Keynote", id: 409183694
-mas "Magnet", id: 441258766
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "TestFlight", id: 899247664
