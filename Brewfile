@@ -91,15 +91,8 @@ cask "slack"
 cask "via"
 cask "visual-studio-code"
 cask "zoom"
-mas "Contrast", id: 1254981365
-mas "GarageBand", id: 682658836
 mas "GoodNotes", id: 1444383602
-mas "iMovie", id: 408981434
-mas "Keynote", id: 409183694
-mas "Numbers", id: 409203825
-mas "Pages", id: 409201541
 mas "TestFlight", id: 899247664
-mas "Textwell", id: 905944937
 mas "Xcode", id: 497799835
 vscode "bierner.emojisense"
 vscode "bungcip.better-toml"
