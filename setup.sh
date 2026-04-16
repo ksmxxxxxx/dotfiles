@@ -97,7 +97,14 @@ link "$DOTFILES_DIR/zsh/.zshrc"     "$HOME/.config/zsh/.zshrc"
 link "$DOTFILES_DIR/zsh/.zlogin"    "$HOME/.config/zsh/.zlogin"
 link "$DOTFILES_DIR/zsh/.zlogout"   "$HOME/.config/zsh/.zlogout"
 link "$DOTFILES_DIR/zsh/.zprofile"  "$HOME/.config/zsh/.zprofile"
-link "$DOTFILES_DIR/zsh/.zprezto"   "$HOME/.config/zsh/.zprezto"
+# Prezto 本体は dotfiles に含めず公式リポジトリから clone する
+# git サブモジュール（pure テーマなど）が必要なため --recursive オプションを使う
+if [ ! -d "$HOME/.config/zsh/.zprezto" ]; then
+  echo "  Prezto をインストール中..."
+  git clone --recursive https://github.com/sorin-ionescu/prezto.git "$HOME/.config/zsh/.zprezto"
+else
+  echo "  Prezto はインストール済みです。スキップします。"
+fi
 link "$DOTFILES_DIR/zsh/.zpreztorc" "$HOME/.config/zsh/.zpreztorc"
 
 # git-prompt.sh をダウンロードする
