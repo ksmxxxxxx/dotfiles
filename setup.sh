@@ -100,6 +100,17 @@ link "$DOTFILES_DIR/zsh/.zprofile"  "$HOME/.config/zsh/.zprofile"
 link "$DOTFILES_DIR/zsh/.zprezto"   "$HOME/.config/zsh/.zprezto"
 link "$DOTFILES_DIR/zsh/.zpreztorc" "$HOME/.config/zsh/.zpreztorc"
 
+# git-prompt.sh をダウンロードする
+# zshrc で source しているが dotfiles には含めず公式リポジトリから取得する
+if [ ! -f "$HOME/.git-completion/git-prompt.sh" ]; then
+  echo "  git-prompt.sh をダウンロード中..."
+  mkdir -p "$HOME/.git-completion"
+  curl -fsSL "https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh" \
+    -o "$HOME/.git-completion/git-prompt.sh"
+else
+  echo "  git-prompt.sh はインストール済みです。スキップします。"
+fi
+
 link "$DOTFILES_DIR/.zshrc"               "$HOME/.zshrc"
 link "$DOTFILES_DIR/.zshenv"              "$HOME/.zshenv"
 link "$DOTFILES_DIR/.tmux.conf"           "$HOME/.tmux.conf"
