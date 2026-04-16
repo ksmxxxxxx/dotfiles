@@ -85,6 +85,17 @@ link() {
 mkdir -p "$HOME/Library/Preferences"
 link "$DOTFILES_DIR/iterm2/com.googlecode.iterm2.plist" "$HOME/Library/Preferences/com.googlecode.iterm2.plist"
 
+# ~/.config/zsh/ 配下のPrezto設定ファイル群をリンクする
+# ZDOTDIRを ~/.config/zsh に向けているため、Preztoの設定はここに集約されている
+mkdir -p "$HOME/.config/zsh"
+link "$DOTFILES_DIR/zsh/.zshenv"    "$HOME/.config/zsh/.zshenv"
+link "$DOTFILES_DIR/zsh/.zshrc"     "$HOME/.config/zsh/.zshrc"
+link "$DOTFILES_DIR/zsh/.zlogin"    "$HOME/.config/zsh/.zlogin"
+link "$DOTFILES_DIR/zsh/.zlogout"   "$HOME/.config/zsh/.zlogout"
+link "$DOTFILES_DIR/zsh/.zprofile"  "$HOME/.config/zsh/.zprofile"
+link "$DOTFILES_DIR/zsh/.zprezto"   "$HOME/.config/zsh/.zprezto"
+link "$DOTFILES_DIR/zsh/.zpreztorc" "$HOME/.config/zsh/.zpreztorc"
+
 link "$DOTFILES_DIR/.zshrc"               "$HOME/.zshrc"
 link "$DOTFILES_DIR/.zshenv"              "$HOME/.zshenv"
 link "$DOTFILES_DIR/.tmux.conf"           "$HOME/.tmux.conf"
