@@ -131,6 +131,10 @@ link "$DOTFILES_DIR/.git_commit_template" "$HOME/.git_commit_template"
 mkdir -p "$HOME/.config"
 link "$DOTFILES_DIR/nvim" "$HOME/.config/nvim"
 
+# Karabiner-Elements のキーバインド設定
+mkdir -p "$HOME/.config/karabiner"
+link "$DOTFILES_DIR/karabiner/karabiner.json" "$HOME/.config/karabiner/karabiner.json"
+
 # ─────────────────────────────────────────────
 # 5. Claude Code（秘書くん）の設定を復元
 # ─────────────────────────────────────────────
