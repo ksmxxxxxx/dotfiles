@@ -4,7 +4,7 @@ return {
     build = { ':TSUpdate' },
     event = { 'BufNewFile', 'BufRead' },
     config = function()
-      require("nvim-treesitter.configs").setup({
+      require("nvim-treesitter").setup({
         auto_install = true,
         highlight = {
           enable = true,
@@ -33,12 +33,12 @@ return {
           "lua",
           "sql",
         },
-        autotag = {
-          enable = true,
-        },
       })
     end
   },
 
-  'windwp/nvim-ts-autotag',
+  {
+    'windwp/nvim-ts-autotag',
+    opts = {},
+  },
 }
