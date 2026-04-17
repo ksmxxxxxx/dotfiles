@@ -87,8 +87,12 @@ link() {
   echo "  作成: $dst -> $src"
 }
 
-mkdir -p "$HOME/Library/Preferences"
-link "$DOTFILES_DIR/iterm2/com.googlecode.iterm2.plist" "$HOME/Library/Preferences/com.googlecode.iterm2.plist"
+# iTerm2 の設定はシンボリックリンクではなく defaults write で管理する
+# iTerm2 は起動時に ~/Library/Preferences/com.googlecode.iterm2.plist を実ファイルで上書きするため
+# symlink を張ってもすぐに壊れてしまう。代わりに PrefsCustomFolder を指定する方式を使う
+defaults write com.googlecode.iterm2 PrefsCustomFolder "$DOTFILES_DIR/iterm2"
+defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -bool true
+echo "  iTerm2: PrefsCustomFolder を $DOTFILES_DIR/iterm2 に設定"
 
 # ~/.config/zsh/ 配下のPrezto設定ファイル群をリンクする
 # ZDOTDIRを ~/.config/zsh に向けているため、Preztoの設定はここに集約されている
