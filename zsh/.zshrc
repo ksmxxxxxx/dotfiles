@@ -49,3 +49,8 @@ alias tkil='tm kill-session'
 
 export RUNEWIDTH_EASTASIAN=0
 export PATH="$HOME/.local/bin:$PATH"
+
+function nvim() {
+  export GH_COPILOT_TOKEN=$(op read "op://Personal/GitHub Copilot OAuth Token/password")
+  command nvim "$@"
+}
