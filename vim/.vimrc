@@ -80,11 +80,14 @@ if has("autocmd")
 endif
 
 " Keymap setting =================================================
+let mapleader = ' '
+
 inoremap <silent> jj <ESC>
 inoremap <silent> kk <ESC>
 nmap <Esc><Esc> :nohlsearch<CR><Esc>
 nmap <Space><Space> V
 "nnoremap s <Nop>
+nnoremap <leader>w :<C-u>w<CR>
 nnoremap bj <C-w>j
 nnoremap bk <C-w>k
 nnoremap bl <C-w>l
@@ -93,19 +96,19 @@ nnoremap bJ <C-w>J
 nnoremap bK <C-w>K
 nnoremap bL <C-w>L
 nnoremap bH <C-w>H
-nnoremap bn gt
-nnoremap bp gT
 nnoremap bc <C-w>c
 nnoremap br <C-w>r
 nnoremap b= <C-w>+
 nnoremap b- <C-w>-
 nnoremap bw <C-w>w
-nnoremap bo <C-w>>
-nnoremap bO <C-w><
+nnoremap bo <C-w><
+nnoremap bO <C-w>>
+nnoremap nt gt
+nnoremap pt gT
+nnoremap nnt :<C-u>tabnew<CR>
 nnoremap bn :<C-u>bn<CR>
 nnoremap bp :<C-u>bp<CR>
 nnoremap bq :<C-u>bd<CR>
-nnoremap bt :<C-u>tabnew<CR>
 nnoremap bs :<C-u>sp<CR>
 nnoremap bv :<C-u>vs<CR>
 " nnoremap sq :<C-u>q<CR>
